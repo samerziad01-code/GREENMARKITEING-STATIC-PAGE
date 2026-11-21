@@ -57,7 +57,7 @@ const EN = {
   'rl.tap': 'Tap to play the video', 'rl.eyebrow': 'From Instagram', 'rl.title': 'Not all marketing… is marketing',
   'rl.sub': 'See our latest work from behind the scenes — follow us for shoots, designs and results as they happen.',
   'rl.followers': 'followers on Instagram', 'rl.follow': 'Follow us on Instagram', 'rl.note': 'Playing the video loads content from Instagram.',
-  'ct.map': 'Wasfi Al-Tal St., Amman'
+  'ct.map': 'Wasfi Al-Tal St., Amman', 'ct.hours': 'Sun – Thu · 9 AM – 5 PM'
 };
 const ROTATE = {
   ar: ['أثرٍ حقيقي', 'مبيعات', 'علامات مميزة', 'مواقع خرافية'],
@@ -297,14 +297,16 @@ lb.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touch
 lb.addEventListener('touchend', e => {
   if (tx === null || e.touches.length) return;
   const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
-  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) document.getElementById(dx < 0 ? 'lbNext' : 'lbPrev').click();
+  // swipe toward the reading direction: English swipes left for next, Arabic swipes right for next
+  const fwd = root.dir === 'rtl' ? dx > 0 : dx < 0;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) document.getElementById(fwd ? 'lbNext' : 'lbPrev').click();
   else if (dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.5) closeLb();
 }, { passive: true });
 gallery.addEventListener('click', e => {
   const card = e.target.closest('.proj'); if (!card || !e.target.closest('.proj__card')) return;
   const p = PROJECTS[+card.dataset.i];
   const pieces = p.pieces.filter(x => activeFilter === 'all' || x[1] === activeFilter); // a filter narrows the pieces too
-  openLb(0, pieces.map(([f, cat], n) => ({ src: `assets/work/${f}.webp`, cap: `${p.name} · ${catLabel(cat)} · ${n + 1}/${pieces.length}` })));
+  openLb(0, pieces.map(([f, cat], n) => ({ src: `assets/work/${f}.webp`, cap: `⁨${p.name}⁩ · ${catLabel(cat)} · ⁦${n + 1}/${pieces.length}⁩` }))); // isolates keep Latin name + counter in order inside Arabic
 });
 document.getElementById('lbClose').onclick = closeLb;
 document.getElementById('lbPrev').onclick = () => { idx = (idx - 1 + list.length) % list.length; show(); };
@@ -313,8 +315,9 @@ lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
 addEventListener('keydown', e => {
   if (lb.hidden) return;
   if (e.key === 'Escape') closeLb();
-  if (e.key === 'ArrowRight') document.getElementById('lbNext').click();
-  if (e.key === 'ArrowLeft') document.getElementById('lbPrev').click();
+  const rtl = root.dir === 'rtl';
+  if (e.key === 'ArrowRight') document.getElementById(rtl ? 'lbPrev' : 'lbNext').click();
+  if (e.key === 'ArrowLeft') document.getElementById(rtl ? 'lbNext' : 'lbPrev').click();
 });
 
 // ---------- Terms & Conditions popup (content loaded once from terms.html) ----------
@@ -428,7 +431,7 @@ function load3D() {
   if (!document.getElementById('hero3d')) return;
   const s = document.createElement('script');
   s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121d'; document.body.appendChild(m); };
+  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121e'; document.body.appendChild(m); };
   document.body.appendChild(s);
 }
 if (document.readyState === 'complete') setTimeout(load3D, 200);

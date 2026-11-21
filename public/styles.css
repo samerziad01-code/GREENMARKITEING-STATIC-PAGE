@@ -458,7 +458,7 @@ html[dir="rtl"] .proj__go svg { transform: scaleX(-1); }
 .contact__logo { width: 200px; margin-bottom: 26px; }
 .contact__copy p { color: var(--muted); }
 .contact__list { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 12px; }
-.contact__list a { display: flex; align-items: center; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 14px 18px; font-weight: 600; color: var(--heading); transition: .2s; font-family: var(--font-en); }
+.contact__list a, .contact__list .ct-hours { display: flex; align-items: center; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 14px 18px; font-weight: 600; color: var(--heading); transition: .2s; font-family: var(--font-en); }
 .contact__list a:hover { border-color: var(--accent); transform: translateX(var(--nudge, 4px)); }
 html[dir="rtl"] .contact__list a { --nudge: -4px; }
 .ic { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 17px; flex: none; }
@@ -603,6 +603,10 @@ html[dir="rtl"] .wiz__preview { border-radius: 16px 16px 16px 4px; }
 .lightbox__close { position: absolute; top: 16px; inset-inline-end: 20px; background: none; border: 0; color: #fff; font-size: 42px; line-height: 1; width: 48px; height: 48px; }
 .lightbox__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; border: 0; background: rgba(255,255,255,.14); color: #fff; font-size: 30px; }
 .lightbox__prev { left: 16px; } .lightbox__next { right: 16px; }
+/* Arabic reads right-to-left: "previous" sits on the right, "next" on the left, arrows mirrored */
+html[dir="rtl"] .lightbox__prev { left: auto; right: 16px; } html[dir="rtl"] .lightbox__next { right: auto; left: 16px; }
+html[dir="rtl"] .lightbox__nav { transform: translateY(-50%) scaleX(-1); }
+@media (max-width: 640px) { html[dir="rtl"] .lightbox__nav { transform: scaleX(-1); } }
 
 /* ---------- reveal (uses `translate`, so `transform` stays free for 3D tilt) ---------- */
 .reveal { opacity: 0; translate: 0 34px; transition: opacity .9s ease, translate .9s cubic-bezier(.2,.7,.2,1); }
@@ -908,4 +912,26 @@ html[dir="rtl"] .reel__tags { justify-content: flex-end; }
 }
 @media (min-width: 981px) and (max-width: 1180px) {
   .bcard__num { display: none; }
+}
+
+/* =====================================================================
+   Older browsers (iOS 12–14, Android Chrome < 88): no `inset` shorthand
+   and no `aspect-ratio`. Spell them out so layouts and overlays still hold.
+   ===================================================================== */
+@supports not (inset: 0) {
+  body::before, .hero::after, .hero__card::after, .alt::before, .bcard__media, .bcard::after, .bcard::before,
+  .websites::before, .wa::before, .lightbox, .hero__3d, .glare, .reel__facade::before { top: 0; right: 0; bottom: 0; left: 0; }
+  .hero__ring { top: -9%; right: -9%; bottom: -9%; left: -9%; }
+  .reel__play::after { top: -10px; right: -10px; bottom: -10px; left: -10px; }
+  @media (max-width: 640px) { .gai__panel { top: auto; right: 0; bottom: 0; left: 0; } }
+}
+@supports not (aspect-ratio: 1 / 1) {
+  .hero__card { min-height: 440px; }
+  .about__photo img { height: auto; }
+  .viewport--desk { height: 0; padding-top: 60%; }
+  .phone { padding-top: 54%; }
+  .proj__stage { height: 0; padding-top: 80%; }
+  .proj__card::before { height: 0; padding-top: 70%; }
+  .shot img { height: auto; }
+  .reel__phone { height: min(604px, calc((100vw - 32px) * 1.7778)); }
 }
