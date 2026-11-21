@@ -13,6 +13,7 @@ const extraOrigins = (process.env.ALLOWED_ORIGINS || "").split(",").map(s => s.t
 const isAllowedOrigin = origin =>
   !!origin && (
     extraOrigins.includes(origin) ||
+    /^https:\/\/(www\.)?greenmarketingjo\.com$/.test(origin) ||
     /^https:\/\/green-marketing[a-z0-9-]*\.onrender\.com$/.test(origin) ||
     /^http:\/\/localhost(:\d+)?$/.test(origin)
   );

@@ -10,37 +10,37 @@
 <link rel="icon" type="image/png" href="assets/logo-mark.png">
 <link rel="apple-touch-icon" href="assets/logo-mark.png">
 <!-- SEO: canonical + language alternates -->
-<link rel="canonical" href="https://green-marketing-jo.onrender.com/">
-<link rel="alternate" hreflang="en" href="https://green-marketing-jo.onrender.com/">
-<link rel="alternate" hreflang="ar" href="https://green-marketing-jo.onrender.com/ar">
-<link rel="alternate" hreflang="x-default" href="https://green-marketing-jo.onrender.com/">
+<link rel="canonical" href="https://greenmarketingjo.com/">
+<link rel="alternate" hreflang="en" href="https://greenmarketingjo.com/">
+<link rel="alternate" hreflang="ar" href="https://greenmarketingjo.com/?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://greenmarketingjo.com/">
 <!-- link previews (WhatsApp, Facebook, LinkedIn, X) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Green Marketing Agency">
-<meta property="og:url" content="https://green-marketing-jo.onrender.com/">
+<meta property="og:url" content="https://greenmarketingjo.com/">
 <meta property="og:title" content="Green Marketing | Turning ideas into real impact">
 <meta property="og:description" content="Creative marketing agency in Jordan — social media, branding, production, and websites & apps for every business. Free WhatsApp consultation.">
-<meta property="og:image" content="https://green-marketing-jo.onrender.com/assets/og-image.jpg">
+<meta property="og:image" content="https://greenmarketingjo.com/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Green Marketing — Turning ideas into real impact">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ar_JO">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://green-marketing-jo.onrender.com/assets/og-image.jpg">
+<meta name="twitter:image" content="https://greenmarketingjo.com/assets/og-image.jpg">
 <!-- AI assistant API (Render web service "green-marketing-ai") -->
 <meta name="gm-ai-api" content="https://green-marketing-ai.onrender.com">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": "https://green-marketing-jo.onrender.com/#agency",
+  "@id": "https://greenmarketingjo.com/#agency",
   "name": "Green Marketing Agency",
   "alternateName": "جرين ماركيتنغ",
   "description": "Creative marketing agency in Jordan: social media management, branding and logo design, photo and video production, Google Ads and SEO, websites and mobile apps.",
-  "url": "https://green-marketing-jo.onrender.com/",
-  "logo": "https://green-marketing-jo.onrender.com/assets/logo-full.png",
-  "image": "https://green-marketing-jo.onrender.com/assets/og-image.jpg",
+  "url": "https://greenmarketingjo.com/",
+  "logo": "https://greenmarketingjo.com/assets/logo-full.png",
+  "image": "https://greenmarketingjo.com/assets/og-image.jpg",
   "telephone": "+962796600022",
   "email": "info@greenmarketingjo.com",
   "address": { "@type": "PostalAddress", "streetAddress": "Wasfi Al-Tal St.", "addressLocality": "Amman", "addressCountry": "JO" },
@@ -52,14 +52,14 @@
   "contactPoint": { "@type": "ContactPoint", "telephone": "+962796600022", "contactType": "customer service", "availableLanguage": ["Arabic", "English"] }
 }
 </script>
-<!-- theme + language before first paint (no flash). The site opens in English; /ar is Arabic. -->
+<!-- theme + language before first paint (no flash). The site opens in English; /?lang=ar is Arabic. -->
 <script>
 (function () {
   var d = document.documentElement, mode = 'auto';
   try { mode = localStorage.getItem('gm-theme') || 'auto'; } catch (e) {}
   var dark = mode === 'dark' || (mode === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
   d.dataset.mode = mode; d.dataset.theme = dark ? 'dark' : 'light';
-  if (/^\/ar\/?$/.test(location.pathname)) { d.lang = 'ar'; d.dir = 'rtl'; }
+  if (/[?&]lang=ar(&|$)/.test(location.search) || /^\/ar\/?$/.test(location.pathname)) { d.lang = 'ar'; d.dir = 'rtl'; }
   // the markup holds the Arabic copy: keep the page hidden until script.js swaps in English
   setTimeout(function () { d.classList.remove('i18n-pending'); }, 2500);
 })();
@@ -68,7 +68,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,400..700&family=Readex+Pro:wght@300..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261121c">
+<link rel="stylesheet" href="styles.css?v=20261121d">
 </head>
 <body>
 
@@ -480,9 +480,9 @@
   <button class="lightbox__nav lightbox__next" id="lbNext" aria-label="Next">›</button>
 </div>
 
-<script src="websites.js?v=20261121c"></script>
-<script src="script.js?v=20261121c"></script>
-<script src="consult.js?v=20261121c"></script>
-<script src="agent.js?v=20261121c"></script>
+<script src="websites.js?v=20261121d"></script>
+<script src="script.js?v=20261121d"></script>
+<script src="consult.js?v=20261121d"></script>
+<script src="agent.js?v=20261121d"></script>
 </body>
 </html>

@@ -31,8 +31,8 @@
 > ⚠️ المفتاح سرّي: مكانه الوحيد إعدادات Render. لا تحطه بأي ملف ولا على GitHub.
 
 ### 3) تأكد
-- الموقع: `https://green-marketing-jo.onrender.com`
-- النسخة العربية: `https://green-marketing-jo.onrender.com/ar` (الموقع بيفتح بالإنجليزي على `/`)
+- الموقع: `https://greenmarketingjo.com`
+- النسخة العربية: `https://greenmarketingjo.com/ar` (الموقع بيفتح بالإنجليزي على `/`)
 - صحة خدمة المساعد: `https://green-marketing-ai.onrender.com/healthz` ← لازم تطلع `ok`
 - افتح المحادثة واسأل سؤال: إذا الرد بيطلع كلمة كلمة، الذكاء الاصطناعي شغال ✅
 

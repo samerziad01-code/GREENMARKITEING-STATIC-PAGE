@@ -8,4 +8,4 @@ Bilingual (Arabic / English) website for **Green Marketing Agency**, a creative 
 
 Deploy & AI setup (Arabic): see [AI-AGENT-SETUP.md](AI-AGENT-SETUP.md).
 
-Live: https://green-marketing-jo.onrender.com
+Live: https://greenmarketingjo.com

@@ -80,7 +80,7 @@ function applyLang() {
   syncLangUrl();
   root.classList.remove('i18n-pending');
 }
-// Each language has its own address (/ = English, /ar = Arabic) so shared links and Google open the right one.
+// Each language has its own address (/ = English, /?lang=ar = Arabic) so shared links and Google open the right one.
 const META = {
   en: { title: document.title, desc: document.querySelector('meta[name="description"]')?.content },
   ar: { title: 'جرين ماركيتنغ | وكالة تسويق إبداعية في الأردن — Green Marketing Agency', desc: 'جرين ماركيتنغ وكالة تسويق إبداعية في الأردن: إدارة سوشال ميديا، هوية بصرية وشعارات، تصوير وإنتاج، إعلانات Google و SEO، ومواقع وتطبيقات لكل المنشآت. استشارة مجانية على واتساب.' }
@@ -90,10 +90,13 @@ function syncLangUrl() {
   document.title = m.title;
   document.querySelector('meta[name="description"]')?.setAttribute('content', m.desc);
   if (!/^\/(ar\/?|en\/?|index\.html)?$/.test(location.pathname)) return; // only on the home page
-  const want = root.lang === 'ar' ? '/ar' : '/';
+  // Arabic = /?lang=ar: a query string works on any host, so refreshing never 404s
+  const q = new URLSearchParams(location.search);
+  if (root.lang === 'ar') q.set('lang', 'ar'); else q.delete('lang');
+  const want = '/' + (q.toString() ? '?' + q : '');
   const canon = document.querySelector('link[rel="canonical"]');
-  if (canon) canon.href = new URL(want, canon.href).href;
-  if (location.pathname !== want) history.replaceState(history.state, '', want + location.search + location.hash);
+  if (canon) canon.href = new URL(root.lang === 'ar' ? '/?lang=ar' : '/', canon.href).href;
+  if (location.pathname + location.search !== want) history.replaceState(history.state, '', want + location.hash);
 }
 function setLang(lang) {
   root.lang = lang; root.dir = lang === 'en' ? 'ltr' : 'rtl';
@@ -409,7 +412,7 @@ function load3D() {
   if (!document.getElementById('hero3d')) return;
   const s = document.createElement('script');
   s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121c'; document.body.appendChild(m); };
+  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121d'; document.body.appendChild(m); };
   document.body.appendChild(s);
 }
 if (document.readyState === 'complete') setTimeout(load3D, 200);
