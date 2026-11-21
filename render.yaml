@@ -28,12 +28,18 @@ services:
         name: Cache-Control
         value: public, max-age=604800
     routes:
-      # English version lives at /en (same page, English content)
+      # The site opens in English at /. Arabic lives at /ar (same page, Arabic content).
+      - type: redirect
+        source: /ar/
+        destination: /ar
+      - type: redirect
+        source: /en
+        destination: /
       - type: redirect
         source: /en/
-        destination: /en
+        destination: /
       - type: rewrite
-        source: /en
+        source: /ar
         destination: /index.html
 
   # 2) The AI assistant API (Claude). The site calls it from the chat widget.

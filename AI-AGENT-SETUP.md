@@ -32,7 +32,7 @@
 
 ### 3) تأكد
 - الموقع: `https://green-marketing-jo.onrender.com`
-- النسخة الإنجليزية: `https://green-marketing-jo.onrender.com/en`
+- النسخة العربية: `https://green-marketing-jo.onrender.com/ar` (الموقع بيفتح بالإنجليزي على `/`)
 - صحة خدمة المساعد: `https://green-marketing-ai.onrender.com/healthz` ← لازم تطلع `ok`
 - افتح المحادثة واسأل سؤال: إذا الرد بيطلع كلمة كلمة، الذكاء الاصطناعي شغال ✅
 

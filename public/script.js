@@ -11,12 +11,12 @@ const EN = {
   'th.light': 'Light', 'th.auto': 'Auto', 'th.dark': 'Dark',
   'hero.eyebrow': 'Creative marketing agency · Jordan',
   'hero.l1': 'We turn ideas into',
-  'hero.lead': 'Green Marketing is a company specialized in marketing and advertising services, helping brands build a strong presence, reach their target audience, and achieve real results through integrated marketing and creative solutions.',
+  'hero.lead': 'Social media, branding, production and websites — with real results.',
   'hero.cta1': 'Book a free consultation', 'hero.cta2': 'See our websites',
   'hero.f1': 'brands trust us', 'hero.f3': 'Websites for every business',
   'st.1': 'clients & brands', 'st.2': 'services under one roof', 'st.3': 'specialized departments', 'st.4': 'integrated marketing',
   'about.eyebrow': 'About us — Hello!',
-  'about.statement': 'Green Marketing is a creative agency building brands that stand out, connect with their audiences, and drive meaningful growth.',
+  'about.statement': 'We build brands that stand out, reach their audience, and grow.',
   'about.p2': 'From branding and social media management to content creation, graphic design, photography, video production, web development and digital marketing, we bring together creativity and strategy to create powerful, memorable brand experiences.',
   'about.skills': 'Technical skills',
   'svc.eyebrow': 'Our services', 'svc.title': 'Everything your brand needs — under one roof',
@@ -28,7 +28,7 @@ const EN = {
   'it.1t': 'Custom web development', 'it.2t': 'iOS & Android apps', 'it.4t': 'Hosting & emails', 'it.5t': 'Systems & platforms', 'it.6t': 'Multi-vendor e-commerce', 'it.7t': 'UI/UX design', 'it.8t': 'Custom software & QR', 'it.more': 'See website examples',
   'web.eyebrow': 'Web design & development',
   'web.title': 'Websites for <em>every business</em>',
-  'web.sub': 'Restaurant, clinic, real-estate company, online store or travel agency — we design and build your site from scratch, with an identity that feels like you: fast, responsive and ready to sell. Pick your business and see for yourself:',
+  'web.sub': 'Restaurant, clinic, store or company — we design your site from scratch: fast, responsive and ready to sell.',
   'web.note': '* Illustrative demos with fictional names to show our style.',
   'wf.1': 'Responsive on every screen', 'wf.2': 'Arabic & English', 'wf.3': 'Lightning-fast loading', 'wf.4': 'SEO-ready', 'wf.5': 'Easy admin dashboard', 'wf.6': 'Online payments & WhatsApp', 'wf.7': 'Online bookings & orders', 'wf.8': 'Hosting, domain & emails',
   'web.every': 'We build websites for…', 'web.cta': 'Get a website for your business',
@@ -37,17 +37,17 @@ const EN = {
   'pr.2t': 'Plan', 'pr.2': 'A clear strategy for content, channels and budget.',
   'pr.3t': 'Create & build', 'pr.3': 'Design, photography, content, websites and campaigns.',
   'pr.4t': 'Launch & grow', 'pr.4': 'We measure results and keep improving.',
-  'work.eyebrow': 'Our work — Portfolio', 'work.title': 'A selection of our creative work',
-  'work.sub': 'Branding, social media, digital design, and print — combining creative ideas, thoughtful execution, and attention to detail.',
-  'work.all': 'All', 'work.social': 'Social media', 'work.story': 'Instagram stories', 'work.logo': 'Logos & identity', 'work.print': 'Printing',
+  'work.eyebrow': 'Our work', 'work.title': 'Work that speaks for itself',
+  'work.more': 'Show more work', 'work.brand': 'Branding',
+  'work.all': 'All', 'work.social': 'Social media', 'work.story': 'Stories', 'work.print': 'Print',
   'case.title': 'The stories behind the designs',
   'case.ftj': 'Represents the future, achieving goals, and moving forward toward success, by combining the letters F + T + J in a modern design that reflects ambition, direction, and progress.',
   'case.well': 'WELL represents food made with care, quality, and purpose. The hand and burger symbolize craftsmanship, while the bold orange adds energy and appetite.',
   'case.sens': "A printed packaging box for a 32-inch LED TV gift from Sensilis — soft pink palette, clean layout and modern aesthetic reflecting the brand's identity.",
-  'cl.eyebrow': 'Our clients', 'cl.title': 'Meaningful partnerships that turn collaboration into lasting success',
+  'cl.eyebrow': 'Our clients', 'cl.title': '25+ brands trust us',
   'cta.title': 'Ready to make your brand <em>the talk of the town?</em>', 'cta.wa': 'Free WhatsApp consultation', 'cs.title': 'Free consultation on WhatsApp', 'cs.sub': 'Answer 7 quick questions and we will get back to you with a plan that fits your project', 'cta.form': 'Send your project details',
   'ct.title': 'Welcome to Green!',
-  'ct.p': "Where ideas grow, brands evolve, and new possibilities begin. At Green, we're passionate about creating meaningful solutions that help businesses move forward and achieve their goals.",
+  'ct.p': 'Tell us about your project and we will get back to you with a clear plan.',
   'ct.form': 'Tell us about your project', 'ct.name': 'Name', 'ct.phone': 'Phone number', 'ct.service': 'Service needed', 'ct.optweb': 'Website', 'ct.msg': 'Your message',
   'ct.send': 'Send message', 'ct.hint': 'Your email app will open to send the message.', 'ct.agree': 'By sending your message you agree to our',
   'ft.tag': 'We turn ideas into impact.', 'ft.terms': 'Terms & Conditions', 'ft.privacy': 'Privacy Policy', 'ft.rights': 'All rights reserved.',
@@ -78,18 +78,21 @@ function applyLang() {
   langBtn.textContent = root.lang === 'en' ? 'ع' : 'EN';
   buildRotator(); splitStatement();
   syncLangUrl();
+  root.classList.remove('i18n-pending');
 }
-// Each language has its own address (/ = Arabic, /en = English) so shared links and Google open the right one.
+// Each language has its own address (/ = English, /ar = Arabic) so shared links and Google open the right one.
 const META = {
-  ar: { title: document.title, desc: document.querySelector('meta[name="description"]')?.content },
-  en: { title: 'Green Marketing Agency | Creative Marketing Agency in Jordan', desc: 'Green Marketing is a creative marketing agency in Jordan: social media management, branding & logo design, photo & video production, Google Ads & SEO, and websites & apps for every kind of business. Free WhatsApp consultation.' }
+  en: { title: document.title, desc: document.querySelector('meta[name="description"]')?.content },
+  ar: { title: 'جرين ماركيتنغ | وكالة تسويق إبداعية في الأردن — Green Marketing Agency', desc: 'جرين ماركيتنغ وكالة تسويق إبداعية في الأردن: إدارة سوشال ميديا، هوية بصرية وشعارات، تصوير وإنتاج، إعلانات Google و SEO، ومواقع وتطبيقات لكل المنشآت. استشارة مجانية على واتساب.' }
 };
 function syncLangUrl() {
-  const m = META[root.lang === 'en' ? 'en' : 'ar'];
+  const m = META[root.lang === 'ar' ? 'ar' : 'en'];
   document.title = m.title;
   document.querySelector('meta[name="description"]')?.setAttribute('content', m.desc);
-  if (!/^\/(en\/?|index\.html)?$/.test(location.pathname)) return; // only on the home page
-  const want = root.lang === 'en' ? '/en' : '/';
+  if (!/^\/(ar\/?|en\/?|index\.html)?$/.test(location.pathname)) return; // only on the home page
+  const want = root.lang === 'ar' ? '/ar' : '/';
+  const canon = document.querySelector('link[rel="canonical"]');
+  if (canon) canon.href = new URL(want, canon.href).href;
   if (location.pathname !== want) history.replaceState(history.state, '', want + location.search + location.hash);
 }
 function setLang(lang) {
@@ -186,27 +189,106 @@ document.querySelectorAll('[data-spot]').forEach(c => c.addEventListener('pointe
   c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px');
 }));
 
-// ---------- portfolio gallery ----------
+// ---------- portfolio: each design shown on its own, in our own frames ----------
+// [file, category, client, width, height] — designs cut from the agency portfolio
 const WORK = [
-  [12, 'social'], [13, 'social'], [14, 'social'], [15, 'social'], [16, 'social'], [17, 'social'],
-  [18, 'social'], [19, 'social'], [20, 'social'], [21, 'social'],
-  [22, 'story'], [23, 'story'],
-  [25, 'logo'], [26, 'logo'], [27, 'logo'], [28, 'logo'],
-  [30, 'print'], [31, 'print']
+  ['social-well-combo', 'social', 'Well', 514, 664],
+  ['story-kaf-jordanian', 'story', 'Kaf Coffee Roasters', 525, 937],
+  ['brand-ftj-identity', 'brand', 'Future Targets jo', 1000, 861],
+  ['social-shahrazad-summer', 'social', 'Shahrazad', 703, 1000],
+  ['social-sensilis-care', 'social', 'Sensilis', 640, 768],
+  ['print-sensilis-box', 'print', 'Sensilis', 977, 689],
+  ['social-rawaq-umrah', 'social', 'Rawaq Travel', 647, 795],
+  ['story-sensilis-skin', 'story', 'Sensilis', 525, 936],
+  ['social-oishi-bite', 'social', 'Oishi', 720, 1000],
+  ['brand-well-logo', 'brand', 'Well', 892, 612],
+  ['social-kaf-beans', 'social', 'Kaf Coffee Roasters', 668, 840],
+  ['social-360-automotive', 'social', '360 Automotive', 640, 761],
+  ['print-well-menu-spread', 'print', 'Well', 1000, 401],
+  ['social-holiday-memories', 'social', 'Holiday', 634, 790],
+  ['story-360-automotive', 'story', '360 Automotive', 557, 1000],
+  ['social-ahwet-mazaya-kiwi', 'social', 'Ahwet Mazaya', 785, 1000],
+  ['brand-ftj-logo', 'brand', 'Future Targets jo', 732, 832],
+  ['social-first-line-petra', 'social', 'First Line', 640, 796],
+  ['social-dukkan-lahm-box', 'social', 'Dukkan Lahm', 506, 647],
+  ['print-menu-cover', 'print', '', 349, 815],
+  ['social-shahrazad-taste', 'social', 'Shahrazad', 898, 826],
+  ['story-kaf-cafe', 'story', 'Kaf Coffee Roasters', 524, 908],
+  ['social-kaf-espresso', 'social', 'Kaf Coffee Roasters', 641, 791],
+  ['brand-well-identity', 'brand', 'Well', 1000, 444],
+  ['social-holiday-sharm', 'social', 'Holiday', 656, 821],
+  ['social-sensilis-glow', 'social', 'Sensilis', 787, 1000],
+  ['story-sensilis-glow', 'story', 'Sensilis', 524, 939],
+  ['social-oishi-noodles', 'social', 'Oishi', 672, 862],
+  ['print-well-menu', 'print', 'Well', 591, 361],
+  ['social-al-joud-lunch', 'social', 'Al Joud', 664, 815],
+  ['brand-ftj-palette', 'brand', 'Future Targets jo', 989, 746],
+  ['social-shahrazad-drinks', 'social', 'Shahrazad', 688, 738],
+  ['story-kaf-cup', 'story', 'Kaf Coffee Roasters', 423, 939],
+  ['social-match-night', 'social', '', 646, 768],
+  ['print-menu-trifold', 'print', '', 591, 408],
+  ['social-bite-into-crunch', 'social', '', 647, 768],
+  ['story-sensilis-routine', 'story', 'Sensilis', 524, 939]
 ];
-const gallery = document.getElementById('gallery');
-gallery.innerHTML = WORK.map(([n, cat]) =>
-  `<button data-cat="${cat}" data-src="assets/work/work-${n}.webp" data-cursor="view"><img src="assets/work/work-${n}-800.webp" srcset="assets/work/work-${n}-800.webp 800w, assets/work/work-${n}.webp 1600w" sizes="(max-width: 640px) 100vw, (max-width: 1240px) 50vw, 620px" alt="Green Marketing portfolio — ${cat}" loading="lazy" decoding="async" width="1600" height="900"></button>`).join('');
+const CAT = {
+  social: { ar: 'سوشال ميديا', en: 'Social media' }, story: { ar: 'ستوري', en: 'Story' },
+  brand: { ar: 'هوية بصرية', en: 'Brand identity' }, print: { ar: 'طباعة وتغليف', en: 'Print & packaging' }
+};
+const FIRST = 12; // shown before "show more"
+const gallery = document.getElementById('gallery'), moreBtn = document.getElementById('workMore');
+let activeFilter = 'all', expanded = false;
+const catLabel = c => CAT[c][root.lang === 'en' ? 'en' : 'ar'];
+function renderWork() {
+  gallery.innerHTML = WORK.map(([f, cat, client, w, h], i) => `
+    <figure class="pf pf--${cat}" data-cat="${cat}" data-i="${i}">
+      <button type="button" class="pf__btn" data-cursor="view" aria-label="${client ? client + ' — ' : ''}${catLabel(cat)}">
+        <img src="assets/portfolio/${f}.webp" alt="${client ? client + ' — ' : ''}${CAT[cat].en} design by Green Marketing" width="${w}" height="${h}" loading="lazy" decoding="async">
+      </button>
+      <figcaption>${client ? `<bdi>${client}</bdi>` : '<span></span>'}<span class="pf__cat">${catLabel(cat)}</span></figcaption>
+    </figure>`).join('');
+  applyWorkFilter();
+}
+function applyWorkFilter() {
+  let shown = 0;
+  gallery.querySelectorAll('.pf').forEach(el => {
+    const match = activeFilter === 'all' || el.dataset.cat === activeFilter;
+    const visible = match && (expanded || activeFilter !== 'all' || shown < FIRST);
+    if (match && visible) shown++;
+    el.classList.toggle('is-hidden', !visible);
+  });
+  const total = WORK.filter(w => activeFilter === 'all' || w[1] === activeFilter).length;
+  moreBtn.hidden = expanded || activeFilter !== 'all' || total <= FIRST;
+}
 document.querySelectorAll('.filter').forEach(f => f.addEventListener('click', () => {
   document.querySelectorAll('.filter').forEach(x => x.classList.toggle('is-active', x === f));
-  gallery.querySelectorAll('button').forEach(b => b.classList.toggle('is-hidden', f.dataset.f !== 'all' && b.dataset.cat !== f.dataset.f));
+  activeFilter = f.dataset.f; applyWorkFilter();
 }));
+moreBtn?.addEventListener('click', () => { expanded = true; applyWorkFilter(); });
+renderWork();
+document.addEventListener('langchange', renderWork);
+
+// ---------- client logos: two rows drifting in opposite directions ----------
+const CLIENTS = [
+  ['holiday', 'Holiday'], ['kaf', 'Kaf Coffee Roasters'], ['sensilis', 'Sensilis'], ['well', 'Well'], ['oishi', 'Oishi'],
+  ['shahrazad', 'Shahrazad'], ['rawaq', 'Rawaq Travel'], ['360-automotive', '360 Automotive'], ['first-line', 'First Line'],
+  ['ropes', 'Ropes Restaurant & Cafe'], ['afaq-royal', 'Afaq Royal'], ['network', 'network'], ['dinar-city', 'Dinar City'],
+  ['engine', 'Engine Car Rental'], ['gloria', 'Gloria Nail Lounge'], ['ahwet-mazaya', 'Ahwet Mazaya'], ['aya-sushi', 'Aya Sushi'],
+  ['palestine', 'Palestine Drinks'], ['stay-and-play', 'Stay & Play'], ['sawani', 'Sawani'], ['al-joud', 'Al Joud'],
+  ['qeshta', 'Qeshta Factory'], ['farouj-al-sham', 'Farouj Al Sham'], ['dukkan-lahm', 'Dukkan Lahm'], ['jar-nar', 'Jar Nar']
+];
+(function renderLogos() {
+  const host = document.getElementById('logos'); if (!host) return;
+  const tile = ([f, n]) => `<li class="logo"><img src="assets/clients/${f}.webp" alt="${n}" loading="lazy" decoding="async"></li>`;
+  const half = Math.ceil(CLIENTS.length / 2);
+  const row = (items, rev) => `<div class="logos__row${rev ? ' logos__row--rev' : ''}"><ul class="logos__track">${items.map(tile).join('')}</ul><ul class="logos__track" aria-hidden="true">${items.map(tile).join('')}</ul></div>`;
+  host.innerHTML = row(CLIENTS.slice(0, half)) + row(CLIENTS.slice(half), true);
+})();
 
 // ---------- lightbox ----------
-const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg');
+const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg'), lbCap = document.getElementById('lbCap');
 let list = [], idx = 0;
-const show = () => { lbImg.src = list[idx]; };
-function openLb(src, srcs) { list = srcs; idx = Math.max(0, srcs.indexOf(src)); show(); lb.hidden = false; root.classList.add('lb-open'); }
+const show = () => { const it = list[idx]; lbImg.src = it.src; lbImg.alt = it.cap; lbCap.textContent = it.cap; };
+function openLb(i, items) { list = items; idx = Math.max(0, i); show(); lb.hidden = false; root.classList.add('lb-open'); }
 function closeLb() { lb.hidden = true; root.classList.remove('lb-open'); }
 let tx = null, ty = null;
 lb.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
@@ -217,10 +299,11 @@ lb.addEventListener('touchend', e => {
   else if (dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.5) closeLb();
 }, { passive: true });
 gallery.addEventListener('click', e => {
-  const b = e.target.closest('button'); if (!b) return;
-  openLb(b.dataset.src, [...gallery.querySelectorAll('button:not(.is-hidden)')].map(x => x.dataset.src));
+  const fig = e.target.closest('.pf'); if (!fig || !e.target.closest('.pf__btn')) return;
+  const visible = [...gallery.querySelectorAll('.pf:not(.is-hidden)')];
+  const items = visible.map(el => { const [f, cat, client] = WORK[+el.dataset.i]; return { src: `assets/portfolio/${f}.webp`, cap: (client ? client + ' · ' : '') + catLabel(cat) }; });
+  openLb(visible.indexOf(fig), items);
 });
-document.querySelectorAll('[data-open]').forEach(c => { c.dataset.cursor = 'view'; c.addEventListener('click', () => { const s = 'assets/work/' + c.dataset.open; openLb(s, [s]); }); });
 document.getElementById('lbClose').onclick = closeLb;
 document.getElementById('lbPrev').onclick = () => { idx = (idx - 1 + list.length) % list.length; show(); };
 document.getElementById('lbNext').onclick = () => { idx = (idx + 1) % list.length; show(); };
@@ -296,7 +379,7 @@ document.getElementById('contactForm').addEventListener('submit', e => {
 
 // ---------- 3D tilt + glare (mouse / trackpad only) ----------
 const canTilt = finePointer && !reduceMotion;
-document.querySelectorAll('.case, .about__photo, #gallery button, .step').forEach(el => { if (!el.dataset.tilt) el.dataset.tilt = '7'; });
+document.querySelectorAll('.about__photo, .step').forEach(el => { if (!el.dataset.tilt) el.dataset.tilt = '7'; });
 document.querySelectorAll('[data-tilt]').forEach(el => {
   if (!el.querySelector(':scope > .glare')) el.insertAdjacentHTML('beforeend', '<span class="glare" aria-hidden="true"></span>');
   if (!canTilt) return;

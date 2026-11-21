@@ -3,8 +3,8 @@
 <head>
 <script>
 (function () {
-  var d = document.documentElement, mode = 'auto', lang = 'ar';
-  try { mode = localStorage.getItem('gm-theme') || 'auto'; lang = localStorage.getItem('gm-lang') || 'ar'; } catch (e) {}
+  var d = document.documentElement, mode = 'auto', lang = 'en';
+  try { mode = localStorage.getItem('gm-theme') || 'auto'; lang = localStorage.getItem('gm-lang') || 'en'; } catch (e) {}
   var dark = mode === 'dark' || (mode === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
   d.dataset.mode = mode; d.dataset.theme = dark ? 'dark' : 'light';
   if (lang === 'en') { d.lang = 'en'; d.dir = 'ltr'; }
@@ -33,7 +33,7 @@
 
 <header class="nav is-scrolled">
   <div class="container nav__inner">
-    <a href="index.html" class="brand" aria-label="Green Marketing">
+    <a href="index.html" data-home="" class="brand" aria-label="Green Marketing">
       <img src="assets/logo-mark.png" alt="" width="56" height="37">
       <span class="brand__name">GREEN MARKETING</span>
     </a>
@@ -44,7 +44,7 @@
         <button type="button" data-theme-set="dark" aria-label="Dark" title="Dark"><svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></button>
       </div>
       <button class="lang" id="langBtn" type="button" aria-label="Switch language">EN</button>
-      <a class="btn btn--ghost btn--sm" href="index.html"><span data-lang="ar">→ الرئيسية</span><span data-lang="en">← Home</span></a>
+      <a class="btn btn--ghost btn--sm" href="index.html" data-home=""><span data-lang="ar">→ الرئيسية</span><span data-lang="en">← Home</span></a>
     </div>
   </div>
 </header>
@@ -269,14 +269,14 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <a href="index.html" class="brand brand--light">
+    <a href="index.html" data-home="" class="brand brand--light">
       <img src="assets/logo-mark-white.png" alt="" width="48" height="32">
       <span class="brand__name">GREEN MARKETING</span>
     </a>
     <nav class="footer__links" aria-label="Legal">
-      <a href="index.html"><span data-lang="ar">الرئيسية</span><span data-lang="en">Home</span></a>
+      <a href="index.html" data-home=""><span data-lang="ar">الرئيسية</span><span data-lang="en">Home</span></a>
       <a href="#privacy"><span data-lang="ar">سياسة الخصوصية</span><span data-lang="en">Privacy Policy</span></a>
-      <a href="index.html#contact"><span data-lang="ar">تواصل معنا</span><span data-lang="en">Contact</span></a>
+      <a href="index.html#contact" data-home="#contact"><span data-lang="ar">تواصل معنا</span><span data-lang="en">Contact</span></a>
     </nav>
   </div>
   <div class="container footer__bottom">
@@ -295,6 +295,8 @@
       const id = a.getAttribute('href').replace(/^#/, '').replace(/-en$/, '');
       a.setAttribute('href', '#' + (en ? id + '-en' : id));
     });
+    // home links return to the same language (/ = English, /ar = Arabic)
+    document.querySelectorAll('a[data-home]').forEach(a => a.setAttribute('href', (en ? '/' : '/ar') + (a.dataset.home || '')));
   };
   btn.addEventListener('click', () => {
     const en = root.lang !== 'en';

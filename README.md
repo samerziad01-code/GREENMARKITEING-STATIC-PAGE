@@ -2,7 +2,7 @@
 
 Bilingual (Arabic / English) website for **Green Marketing Agency**, a creative marketing agency in Jordan.
 
-- `public/` — the static website (HTML/CSS/JS, images). Arabic at `/`, English at `/en`.
+- `public/` — the static website (HTML/CSS/JS, images). English at `/`, Arabic at `/ar`.
 - `server.js` + `api/` — small Node API for the AI assistant chat (Claude), with rate limiting and CORS.
 - `render.yaml` — Render Blueprint that deploys both: a free Static Site and a Node Web Service.
 

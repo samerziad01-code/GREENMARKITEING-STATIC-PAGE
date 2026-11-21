@@ -11,3 +11,7 @@ node_modules/
 Thumbs.db
 desktop.ini
 .vscode/
+
+# temporary crop sources (never commit)
+public/_src/
+public/out/
