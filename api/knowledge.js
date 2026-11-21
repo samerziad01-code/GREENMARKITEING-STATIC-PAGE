@@ -54,7 +54,7 @@ Including: network, Afaq Royal, Holiday, Ropes Restaurant & Cafe, Palestine Drin
 Portfolio highlights: social media designs for food & beverage brands, Instagram stories, logos/identities (Future Targets jo — letters F+T+J for ambition and progress; Well — burger brand "made well. made right"), menus and packaging (a Sensilis gift box for a 32-inch TV).
 
 ## Contact
-Phone & WhatsApp: 0796 600 022 (+962 796 600 022). Email: info@greenmarketingjo.com.
+Phone & WhatsApp: 0796 600 022 (+962 796 600 022). Email: info@greenmarketingjo.com. Instagram: @greenmarketing.jo (https://www.instagram.com/greenmarketing.jo/) — latest work, reels and behind-the-scenes.
 Free consultation: a short questionnaire on the website that sends a ready WhatsApp message to the team.
 
 ## Policies (summary)
