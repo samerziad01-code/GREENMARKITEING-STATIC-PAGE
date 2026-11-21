@@ -431,7 +431,7 @@ function load3D() {
   if (!document.getElementById('hero3d')) return;
   const s = document.createElement('script');
   s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121j'; document.body.appendChild(m); };
+  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121k'; document.body.appendChild(m); };
   document.body.appendChild(s);
 }
 if (document.readyState === 'complete') setTimeout(load3D, 200);

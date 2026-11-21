@@ -941,3 +941,10 @@ html[dir="rtl"] .reel__tags { justify-content: flex-end; }
 .ic svg.f, .social-btn svg.f { fill: currentColor; stroke: none; }
 .ic--fb { background: #1877F2; } .ic--in { background: #0A66C2; }
 .footer__links .social-btn--fb:hover { background: #1877F2; } .footer__links .social-btn--in:hover { background: #0A66C2; }
+
+/* Safari: a flex:1 (0% basis) child of a dialog with no set height collapses to almost nothing,
+   which squashed the consultation sheet on iPhone. Use content-based sizing + a definite sheet height. */
+.wiz__body, .tmodal__body { flex: 1 1 auto; }
+@media (max-width: 640px) {
+  .wiz, .tmodal { height: 88vh; height: 88dvh; }
+}
