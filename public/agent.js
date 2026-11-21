@@ -274,8 +274,8 @@
     if (g === 'reset') { history = []; save(); renderAll(); input.focus(); }
     const chip = e.target.closest('.gai__chip'); if (chip) ask(chip.textContent);
     const act = e.target.closest('.gai__act')?.dataset.act;
-    if (act === 'CONSULT') { if (window.GMConsult) { closePanel(); window.GMConsult.open(); } else window.open('https://wa.me/962796600022', '_blank', 'noopener'); }
-    if (act === 'WHATSAPP') window.open('https://wa.me/962796600022', '_blank', 'noopener');
+    if (act === 'CONSULT') { if (window.GMConsult) { closePanel(); window.GMConsult.open(); } else window.open(window.gmWaLink ? window.gmWaLink() : 'https://wa.me/962796600022', '_blank', 'noopener'); }
+    if (act === 'WHATSAPP') window.open(window.gmWaLink ? window.gmWaLink() : 'https://wa.me/962796600022', '_blank', 'noopener');
     if (act === 'MAP') window.open('https://maps.app.goo.gl/KFzNALZsbk7PUZEL9', '_blank', 'noopener');
     const target = { WEBSITES: '#websites', WORK: '#work', CONTACT: '#contact' }[act];
     if (target) { if (innerWidth < 640) closePanel(); document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' }); }

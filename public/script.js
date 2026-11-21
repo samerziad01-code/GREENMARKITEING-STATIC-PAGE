@@ -431,8 +431,15 @@ function load3D() {
   if (!document.getElementById('hero3d')) return;
   const s = document.createElement('script');
   s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121e'; document.body.appendChild(m); };
+  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121f'; document.body.appendChild(m); };
   document.body.appendChild(s);
 }
 if (document.readyState === 'complete') setTimeout(load3D, 200);
 else addEventListener('load', () => ('requestIdleCallback' in window ? requestIdleCallback(load3D, { timeout: 1500 }) : setTimeout(load3D, 300)));
+
+// ---------- WhatsApp: open with a greeting + the site link, so the chat shows the Green Marketing preview card ----------
+const WA_HELLO = { ar: 'مرحبا Green Marketing 👋\n\nhttps://greenmarketingjo.com/?lang=ar', en: 'Hi Green Marketing 👋\n\nhttps://greenmarketingjo.com' };
+window.gmWaLink = () => 'https://wa.me/962796600022?text=' + encodeURIComponent(WA_HELLO[root.lang === 'ar' ? 'ar' : 'en']);
+const syncWaLinks = () => document.querySelectorAll('a[href^="https://wa.me/962796600022"]').forEach(a => { a.href = window.gmWaLink(); });
+syncWaLinks();
+document.addEventListener('langchange', syncWaLinks);

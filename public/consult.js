@@ -98,7 +98,8 @@
     });
     lines.push(`• ${T(UI.lTime)}: ${TIMES[st.time][L() === 'en' ? 1 : 0]}`);
     if (st.notes.trim()) lines.push(`• ${T(UI.lNotes)}: ${st.notes.trim()}`);
-    lines.push('', T(UI.thanks));
+    // the site link on its own line makes WhatsApp show the Green Marketing preview card (logo + image)
+    lines.push('', T(UI.thanks), '', L() === 'en' ? 'https://greenmarketingjo.com' : 'https://greenmarketingjo.com/?lang=ar');
     return lines.join('\n');
   }
   const waUrl = text => `https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`;
@@ -148,7 +149,7 @@
       <div class="wiz__bar" aria-hidden="true"><i style="width:${pct}%"></i></div>
       <div class="wiz__body">${body}</div>
       <div class="wiz__foot">
-        ${i > 0 ? `<button type="button" class="btn btn--ghost btn--sm" data-wiz="back">${T(UI.back)}</button>` : `<a class="wiz__direct" href="https://wa.me/${PHONE}" target="_blank" rel="noopener">${T(UI.direct)}</a>`}
+        ${i > 0 ? `<button type="button" class="btn btn--ghost btn--sm" data-wiz="back">${T(UI.back)}</button>` : `<a class="wiz__direct" href="${window.gmWaLink ? window.gmWaLink() : `https://wa.me/${PHONE}`}" target="_blank" rel="noopener">${T(UI.direct)}</a>`}
         <span class="wiz__spacer"></span>
         ${!isDetails && q.optional ? `<button type="button" class="btn btn--ghost btn--sm" data-wiz="skip">${T(UI.skip)}</button>` : ''}
         <button type="button" class="btn btn--solid btn--sm wiz__next${isDetails ? ' wiz__send' : ''}" data-wiz="next" ${answered(i) ? '' : 'disabled'}>${nextLabel}</button>
