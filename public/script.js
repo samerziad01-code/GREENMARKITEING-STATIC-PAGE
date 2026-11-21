@@ -189,32 +189,22 @@ document.querySelectorAll('[data-spot]').forEach(c => c.addEventListener('pointe
   c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px');
 }));
 
-// ---------- work: one card per client, laid out in our own design ----------
-// Each card is a new composition: brand colour, logo, what we did, and a fanned collage of the pieces.
-// pieces: [file, category, width, height]
+// ---------- work: one card per client, fully drawn in code (no screenshots) ----------
+// Brand colour, monogram, what we delivered, and little illustrated pieces (post, story, identity, menu).
+// When the agency sends the original design files they can replace the illustrations.
+// work: [category, number of pieces]
 const PROJECTS = [
-  { name: 'Well', logo: 'well', c1: '#2a1f14', c2: '#f2a81d', ind: ['مطعم برجر', 'Burger restaurant'],
-    pieces: [['brand-well-logo', 'brand', 892, 612], ['social-well-combo', 'social', 514, 664], ['print-well-menu-spread', 'print', 1000, 401], ['brand-well-identity', 'brand', 1000, 444], ['print-well-menu', 'print', 591, 361]] },
-  { name: 'Sensilis', logo: 'sensilis', c1: '#5c2a3a', c2: '#e7a3b4', ind: ['عناية بالبشرة', 'Skincare'],
-    pieces: [['story-sensilis-skin', 'story', 525, 936], ['social-sensilis-care', 'social', 640, 768], ['print-sensilis-box', 'print', 977, 689], ['social-sensilis-glow', 'social', 787, 1000], ['story-sensilis-glow', 'story', 524, 939], ['story-sensilis-routine', 'story', 524, 939]] },
-  { name: 'Kaf Coffee Roasters', logo: 'kaf', c1: '#2b1a10', c2: '#b07a4a', ind: ['محمصة قهوة', 'Coffee roastery'],
-    pieces: [['story-kaf-jordanian', 'story', 525, 937], ['social-kaf-beans', 'social', 668, 840], ['social-kaf-espresso', 'social', 641, 791], ['story-kaf-cafe', 'story', 524, 908], ['story-kaf-cup', 'story', 423, 939]] },
-  { name: 'Future Targets jo', logo: '', c1: '#0d2a44', c2: '#3f8fd0', ind: ['هوية شركة', 'Company identity'],
-    pieces: [['brand-ftj-logo', 'brand', 732, 832], ['brand-ftj-identity', 'brand', 1000, 861], ['brand-ftj-palette', 'brand', 989, 746]] },
-  { name: 'Shahrazad', logo: 'shahrazad', c1: '#4a1410', c2: '#e0693c', ind: ['مطعم ومشروبات', 'Food & drinks'],
-    pieces: [['social-shahrazad-summer', 'social', 703, 1000], ['social-shahrazad-taste', 'social', 898, 826], ['social-shahrazad-drinks', 'social', 688, 738]] },
-  { name: '360 Automotive', logo: '360-automotive', c1: '#111a24', c2: '#5d7d9c', ind: ['خدمات سيارات', 'Car services'],
-    pieces: [['social-360-automotive', 'social', 640, 761], ['story-360-automotive', 'story', 557, 1000]] },
-  { name: 'Oishi', logo: 'oishi', c1: '#3d0d0d', c2: '#e04b3a', ind: ['مطعم آسيوي', 'Asian food'],
-    pieces: [['social-oishi-bite', 'social', 720, 1000], ['social-oishi-noodles', 'social', 672, 862]] },
-  { name: 'Holiday', logo: 'holiday', c1: '#08324a', c2: '#2aa1c9', ind: ['سياحة وسفر', 'Travel'],
-    pieces: [['social-holiday-memories', 'social', 634, 790], ['social-holiday-sharm', 'social', 656, 821]] },
-  { name: 'Rawaq Travel · First Line', logo: 'rawaq', c1: '#1d2b1a', c2: '#c9a24a', ind: ['حملات سفر', 'Travel campaigns'],
-    pieces: [['social-rawaq-umrah', 'social', 647, 795], ['social-first-line-petra', 'social', 640, 796]] },
-  { name: 'Ahwet Mazaya · Al Joud · Dukkan Lahm', logo: 'ahwet-mazaya', c1: '#173a1b', c2: '#41A223', ind: ['مطاعم ومقاهي', 'Restaurants & cafés'],
-    pieces: [['social-ahwet-mazaya-kiwi', 'social', 785, 1000], ['social-al-joud-lunch', 'social', 664, 815], ['social-dukkan-lahm-box', 'social', 506, 647], ['social-bite-into-crunch', 'social', 647, 768], ['social-match-night', 'social', 646, 768]] },
-  { name: 'Menus', logo: '', c1: '#2f2a22', c2: '#cdb48a', ind: ['منيوهات وطباعة', 'Menus & print'],
-    pieces: [['print-menu-trifold', 'print', 591, 408], ['print-menu-cover', 'print', 349, 815]] }
+  { name: 'Well', mono: 'W', c1: '#2a1f14', c2: '#f2a81d', ind: ['مطعم برجر', 'Burger restaurant'], work: [['brand', 2], ['print', 2], ['social', 1]] },
+  { name: 'Sensilis', mono: 'S', c1: '#5c2a3a', c2: '#e7a3b4', ind: ['عناية بالبشرة', 'Skincare'], work: [['story', 3], ['social', 2], ['print', 1]] },
+  { name: 'Kaf Coffee Roasters', mono: 'K', c1: '#2b1a10', c2: '#c08a55', ind: ['محمصة قهوة', 'Coffee roastery'], work: [['story', 3], ['social', 2]] },
+  { name: 'Future Targets jo', mono: 'FTJ', c1: '#0d2a44', c2: '#3f8fd0', ind: ['هوية شركة', 'Company identity'], work: [['brand', 3]] },
+  { name: 'Shahrazad', mono: 'S', c1: '#4a1410', c2: '#e0693c', ind: ['مطعم ومشروبات', 'Food & drinks'], work: [['social', 3]] },
+  { name: '360 Automotive', mono: '360', c1: '#111a24', c2: '#6f8fae', ind: ['خدمات سيارات', 'Car services'], work: [['social', 1], ['story', 1]] },
+  { name: 'Oishi', mono: 'O', c1: '#3d0d0d', c2: '#e04b3a', ind: ['مطعم آسيوي', 'Asian food'], work: [['social', 2]] },
+  { name: 'Holiday', mono: 'H', c1: '#08324a', c2: '#2aa1c9', ind: ['سياحة وسفر', 'Travel'], work: [['social', 2]] },
+  { name: 'Rawaq Travel · First Line', mono: 'R', c1: '#1d2b1a', c2: '#c9a24a', ind: ['حملات سفر', 'Travel campaigns'], work: [['social', 2]] },
+  { name: 'Ahwet Mazaya · Al Joud · Dukkan Lahm', mono: 'A', c1: '#173a1b', c2: '#5fbf3a', ind: ['مطاعم ومقاهي', 'Restaurants & cafés'], work: [['social', 5]] },
+  { name: 'Restaurant menus', mono: 'M', c1: '#2f2a22', c2: '#cdb48a', ind: ['منيوهات وطباعة', 'Menus & print'], work: [['print', 2]] }
 ];
 const CAT = {
   social: { ar: 'سوشال ميديا', en: 'Social media' }, story: { ar: 'ستوري', en: 'Stories' },
@@ -225,33 +215,29 @@ const gallery = document.getElementById('gallery'), moreBtn = document.getElemen
 let activeFilter = 'all', expanded = false;
 const isEn = () => root.lang === 'en';
 const catLabel = c => CAT[c][isEn() ? 'en' : 'ar'];
-const cats = p => [...new Set(p.pieces.map(x => x[1]))];
-// the collage: up to 3 pieces, the strongest in front; each sits in a box with its own ratio (never stretched)
-function collage(p) {
-  const pick = p.pieces.slice(0, 3);
-  const order = pick.length === 3 ? [1, 0, 2] : pick.length === 2 ? [1, 0] : [0]; // [left, front, right]
-  const slots = pick.length === 3 ? ['l', 'f', 'r'] : pick.length === 2 ? ['l', 'f'] : ['f'];
-  return order.map((k, n) => {
-    const [f, cat, w, h] = pick[k], r = w / h, shape = cat === 'story' ? 'story' : r > 1.25 ? 'wide' : 'tall';
-    return `<span class="shot shot--${slots[n]} shot--${shape}" style="--r:${(w / h).toFixed(3)}"><img src="assets/portfolio/${f}.webp" alt="" width="${w}" height="${h}" loading="lazy" decoding="async"></span>`;
-  }).join('');
+// one illustrated piece per category, drawn with plain elements
+const OBJ = {
+  social: m => `<span class="obj obj--post"><i class="o-top"><i class="o-av"></i><i class="o-ln o-ln--s"></i></i><i class="o-img"><b>${m}</b></i><i class="o-ln"></i><i class="o-ln o-ln--s"></i></span>`,
+  story: m => `<span class="obj obj--story"><i class="o-bars"></i><i class="o-img"><b>${m}</b></i><i class="o-ln"></i><i class="o-cta"></i></span>`,
+  brand: m => `<span class="obj obj--brand"><i class="o-mark"><b>${m}</b></i><i class="o-ln o-ln--c"></i><i class="o-sw"><i></i><i></i><i></i></i></span>`,
+  print: m => `<span class="obj obj--menu"><i class="o-head"><b>${m}</b></i><i class="o-row"></i><i class="o-row"></i><i class="o-row"></i><i class="o-row o-row--s"></i></span>`
+};
+function stage(p) {
+  // up to 3 pieces: the main category in front, the others either side
+  const kinds = p.work.flatMap(([c, n]) => Array(Math.min(n, 3)).fill(c)).slice(0, 3);
+  const slots = kinds.length === 3 ? ['f', 'l', 'r'] : kinds.length === 2 ? ['f', 'l'] : ['f'];
+  return kinds.map((c, i) => `<span class="shot shot--${slots[i]} shot--${c}">${OBJ[c](p.mono)}</span>`).join('');
 }
 function renderWork() {
   gallery.innerHTML = PROJECTS.map((p, i) => `
-    <article class="proj" data-i="${i}" data-cats="${cats(p).join(' ')}" style="--c1:${p.c1};--c2:${p.c2}">
-      <button type="button" class="proj__btn" data-cursor="view" aria-label="${p.name} — ${isEn() ? 'view work' : 'شوف الشغل'}">
-        <span class="proj__stage">${collage(p)}</span>
-        <span class="proj__info">
-          <span class="proj__head">
-            ${p.logo ? `<img class="proj__logo" src="assets/clients/${p.logo}.webp" alt="" loading="lazy" decoding="async">` : `<span class="proj__logo proj__logo--txt" aria-hidden="true">${p.name[0]}</span>`}
-            <span class="proj__title"><bdi>${p.name}</bdi><small>${p.ind[isEn() ? 1 : 0]}</small></span>
-          </span>
-          <span class="proj__foot">
-            <span class="proj__tags">${cats(p).map(c => `<span>${catLabel(c)}</span>`).join('')}</span>
-            <span class="proj__count">${p.pieces.length} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </span>
-        </span>
-      </button>
+    <article class="proj" data-i="${i}" data-cats="${p.work.map(w => w[0]).join(' ')}" style="--c1:${p.c1};--c2:${p.c2}">
+      <div class="proj__card">
+        <div class="proj__stage" aria-hidden="true">${stage(p)}</div>
+        <div class="proj__info">
+          <h3 class="proj__title"><bdi>${p.name}</bdi><small>${p.ind[isEn() ? 1 : 0]}</small></h3>
+          <ul class="proj__tags">${p.work.map(([c, n]) => `<li>${catLabel(c)} <b>${n}</b></li>`).join('')}</ul>
+        </div>
+      </div>
     </article>`).join('');
   applyWorkFilter();
 }
@@ -275,18 +261,13 @@ moreBtn?.addEventListener('click', () => { expanded = true; applyWorkFilter(); }
 renderWork();
 document.addEventListener('langchange', renderWork);
 
-// ---------- client logos: two rows drifting in opposite directions ----------
-const CLIENTS = [
-  ['holiday', 'Holiday'], ['kaf', 'Kaf Coffee Roasters'], ['sensilis', 'Sensilis'], ['well', 'Well'], ['oishi', 'Oishi'],
-  ['shahrazad', 'Shahrazad'], ['rawaq', 'Rawaq Travel'], ['360-automotive', '360 Automotive'], ['first-line', 'First Line'],
-  ['ropes', 'Ropes Restaurant & Cafe'], ['afaq-royal', 'Afaq Royal'], ['network', 'network'], ['dinar-city', 'Dinar City'],
-  ['engine', 'Engine Car Rental'], ['gloria', 'Gloria Nail Lounge'], ['ahwet-mazaya', 'Ahwet Mazaya'], ['aya-sushi', 'Aya Sushi'],
-  ['palestine', 'Palestine Drinks'], ['stay-and-play', 'Stay & Play'], ['sawani', 'Sawani'], ['al-joud', 'Al Joud'],
-  ['qeshta', 'Qeshta Factory'], ['farouj-al-sham', 'Farouj Al Sham'], ['dukkan-lahm', 'Dukkan Lahm'], ['jar-nar', 'Jar Nar']
-];
+// ---------- clients: name tiles drifting in two rows (crisp text, no cropped logos) ----------
+const CLIENTS = ['Holiday', 'Kaf Coffee Roasters', 'Sensilis', 'Well', 'Oishi', 'Shahrazad', 'Rawaq Travel', '360 Automotive', 'First Line',
+  'Ropes Restaurant & Cafe', 'Afaq Royal', 'network', 'Dinar City', 'Engine Car Rental', 'Gloria Nail Lounge', 'Ahwet Mazaya', 'Aya Sushi',
+  'Palestine Drinks', 'Stay & Play', 'Sawani', 'Al Joud', 'Qeshta Factory', 'Farouj Al Sham', 'Dukkan Lahm', 'Jar Nar'];
 (function renderLogos() {
   const host = document.getElementById('logos'); if (!host) return;
-  const tile = ([f, n]) => `<li class="logo"><img src="assets/clients/${f}.webp" alt="${n}" loading="lazy" decoding="async"></li>`;
+  const tile = n => `<li class="logo"><span>${n.replace('&', '&amp;')}</span></li>`;
   const half = Math.ceil(CLIENTS.length / 2);
   const row = (items, rev) => `<div class="logos__row${rev ? ' logos__row--rev' : ''}"><ul class="logos__track">${items.map(tile).join('')}</ul><ul class="logos__track" aria-hidden="true">${items.map(tile).join('')}</ul></div>`;
   host.innerHTML = row(CLIENTS.slice(0, half)) + row(CLIENTS.slice(half), true);
@@ -306,13 +287,6 @@ lb.addEventListener('touchend', e => {
   if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) document.getElementById(dx < 0 ? 'lbNext' : 'lbPrev').click();
   else if (dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.5) closeLb();
 }, { passive: true });
-gallery.addEventListener('click', e => {
-  const card = e.target.closest('.proj'); if (!card || !e.target.closest('.proj__btn')) return;
-  const p = PROJECTS[+card.dataset.i];
-  // the selected filter narrows the pieces too (e.g. only Sensilis stories)
-  const pieces = p.pieces.filter(x => activeFilter === 'all' || x[1] === activeFilter);
-  openLb(0, pieces.map(([f, cat], n) => ({ src: `assets/portfolio/${f}.webp`, cap: `${p.name} · ${catLabel(cat)} · ${n + 1}/${pieces.length}` })));
-});
 document.getElementById('lbClose').onclick = closeLb;
 document.getElementById('lbPrev').onclick = () => { idx = (idx - 1 + list.length) % list.length; show(); };
 document.getElementById('lbNext').onclick = () => { idx = (idx + 1) % list.length; show(); };
@@ -435,7 +409,7 @@ function load3D() {
   if (!document.getElementById('hero3d')) return;
   const s = document.createElement('script');
   s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js'; document.body.appendChild(m); };
+  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121c'; document.body.appendChild(m); };
   document.body.appendChild(s);
 }
 if (document.readyState === 'complete') setTimeout(load3D, 200);
