@@ -192,22 +192,33 @@ document.querySelectorAll('[data-spot]').forEach(c => c.addEventListener('pointe
   c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px');
 }));
 
-// ---------- work: one card per client, fully drawn in code (no screenshots) ----------
-// Brand colour, monogram, what we delivered, and little illustrated pieces (post, story, identity, menu).
-// When the agency sends the original design files they can replace the illustrations.
-// work: [category, number of pieces]
+// ---------- work: one card per client with that client's own designs ----------
+// Images: re-cut from the original (lossless) portfolio pages and AI-upscaled (ESRGAN x4).
+// assets/work/<file>.webp = 1600px (viewer), <file>-800.webp = 800px (cards).
+// pieces: [file, category, width, height]
 const PROJECTS = [
-  { name: 'Well', mono: 'W', c1: '#2a1f14', c2: '#f2a81d', ind: ['مطعم برجر', 'Burger restaurant'], work: [['brand', 2], ['print', 2], ['social', 1]] },
-  { name: 'Sensilis', mono: 'S', c1: '#5c2a3a', c2: '#e7a3b4', ind: ['عناية بالبشرة', 'Skincare'], work: [['story', 3], ['social', 2], ['print', 1]] },
-  { name: 'Kaf Coffee Roasters', mono: 'K', c1: '#2b1a10', c2: '#c08a55', ind: ['محمصة قهوة', 'Coffee roastery'], work: [['story', 3], ['social', 2]] },
-  { name: 'Future Targets jo', mono: 'FTJ', c1: '#0d2a44', c2: '#3f8fd0', ind: ['هوية شركة', 'Company identity'], work: [['brand', 3]] },
-  { name: 'Shahrazad', mono: 'S', c1: '#4a1410', c2: '#e0693c', ind: ['مطعم ومشروبات', 'Food & drinks'], work: [['social', 3]] },
-  { name: '360 Automotive', mono: '360', c1: '#111a24', c2: '#6f8fae', ind: ['خدمات سيارات', 'Car services'], work: [['social', 1], ['story', 1]] },
-  { name: 'Oishi', mono: 'O', c1: '#3d0d0d', c2: '#e04b3a', ind: ['مطعم آسيوي', 'Asian food'], work: [['social', 2]] },
-  { name: 'Holiday', mono: 'H', c1: '#08324a', c2: '#2aa1c9', ind: ['سياحة وسفر', 'Travel'], work: [['social', 2]] },
-  { name: 'Rawaq Travel · First Line', mono: 'R', c1: '#1d2b1a', c2: '#c9a24a', ind: ['حملات سفر', 'Travel campaigns'], work: [['social', 2]] },
-  { name: 'Ahwet Mazaya · Al Joud · Dukkan Lahm', mono: 'A', c1: '#173a1b', c2: '#5fbf3a', ind: ['مطاعم ومقاهي', 'Restaurants & cafés'], work: [['social', 5]] },
-  { name: 'Restaurant menus', mono: 'M', c1: '#2f2a22', c2: '#cdb48a', ind: ['منيوهات وطباعة', 'Menus & print'], work: [['print', 2]] }
+  { name: 'Well', c1: '#2a1f14', c2: '#f2a81d', ind: ['مطعم برجر', 'Burger restaurant'],
+    pieces: [['brand-well-logo', 'brand', 1600, 1098], ['social-well-combo', 'social', 1237, 1600], ['print-well-menu-spread', 'print', 1600, 642], ['brand-well-identity', 'brand', 1600, 710], ['print-well-menu', 'print', 1560, 952]] },
+  { name: 'Sensilis', c1: '#5c2a3a', c2: '#e7a3b4', ind: ['عناية بالبشرة', 'Skincare'],
+    pieces: [['story-sensilis-skin', 'story', 897, 1600], ['social-sensilis-care', 'social', 1335, 1600], ['print-sensilis-box', 'print', 1600, 1127], ['social-sensilis-glow', 'social', 1259, 1600], ['story-sensilis-glow', 'story', 893, 1600], ['story-sensilis-routine', 'story', 893, 1600]] },
+  { name: 'Kaf Coffee Roasters', c1: '#2b1a10', c2: '#c08a55', ind: ['محمصة قهوة', 'Coffee roastery'],
+    pieces: [['story-kaf-jordanian', 'story', 896, 1600], ['social-kaf-beans', 'social', 1273, 1600], ['social-kaf-espresso', 'social', 1297, 1600], ['story-kaf-cafe', 'story', 924, 1600], ['story-kaf-cup', 'story', 720, 1600]] },
+  { name: 'Future Targets jo', c1: '#0d2a44', c2: '#3f8fd0', ind: ['هوية شركة', 'Company identity'],
+    pieces: [['brand-ftj-logo', 'brand', 1407, 1600], ['brand-ftj-identity', 'brand', 1600, 1377], ['brand-ftj-palette', 'brand', 1600, 1207]] },
+  { name: 'Shahrazad', c1: '#4a1410', c2: '#e0693c', ind: ['مطعم ومشروبات', 'Food & drinks'],
+    pieces: [['social-shahrazad-summer', 'social', 1126, 1600], ['social-shahrazad-taste', 'social', 1600, 1472], ['social-shahrazad-drinks', 'social', 1493, 1600]] },
+  { name: '360 Automotive', c1: '#111a24', c2: '#6f8fae', ind: ['خدمات سيارات', 'Car services'],
+    pieces: [['social-360-automotive', 'social', 1348, 1600], ['story-360-automotive', 'story', 890, 1600]] },
+  { name: 'Oishi', c1: '#3d0d0d', c2: '#e04b3a', ind: ['مطعم آسيوي', 'Asian food'],
+    pieces: [['social-oishi-bite', 'social', 1152, 1600], ['social-oishi-noodles', 'social', 1249, 1600]] },
+  { name: 'Holiday', c1: '#08324a', c2: '#2aa1c9', ind: ['سياحة وسفر', 'Travel'],
+    pieces: [['social-holiday-memories', 'social', 1285, 1600], ['social-holiday-sharm', 'social', 1279, 1600]] },
+  { name: 'Rawaq Travel · First Line', c1: '#1d2b1a', c2: '#c9a24a', ind: ['حملات سفر', 'Travel campaigns'],
+    pieces: [['social-rawaq-umrah', 'social', 1302, 1600], ['social-first-line-petra', 'social', 1285, 1600]] },
+  { name: 'Ahwet Mazaya · Al Joud · Dukkan Lahm', c1: '#173a1b', c2: '#5fbf3a', ind: ['مطاعم ومقاهي', 'Restaurants & cafés'],
+    pieces: [['social-ahwet-mazaya-kiwi', 'social', 1255, 1600], ['social-al-joud-lunch', 'social', 1303, 1600], ['social-dukkan-lahm-box', 'social', 1252, 1600], ['social-bite-into-crunch', 'social', 1347, 1600], ['social-match-night', 'social', 1347, 1600]] },
+  { name: 'Restaurant menus', c1: '#2f2a22', c2: '#cdb48a', ind: ['منيوهات وطباعة', 'Menus & print'],
+    pieces: [['print-menu-trifold', 'print', 1568, 1084], ['print-menu-cover', 'print', 686, 1600]] }
 ];
 const CAT = {
   social: { ar: 'سوشال ميديا', en: 'Social media' }, story: { ar: 'ستوري', en: 'Stories' },
@@ -218,29 +229,28 @@ const gallery = document.getElementById('gallery'), moreBtn = document.getElemen
 let activeFilter = 'all', expanded = false;
 const isEn = () => root.lang === 'en';
 const catLabel = c => CAT[c][isEn() ? 'en' : 'ar'];
-// one illustrated piece per category, drawn with plain elements
-const OBJ = {
-  social: m => `<span class="obj obj--post"><i class="o-top"><i class="o-av"></i><i class="o-ln o-ln--s"></i></i><i class="o-img"><b>${m}</b></i><i class="o-ln"></i><i class="o-ln o-ln--s"></i></span>`,
-  story: m => `<span class="obj obj--story"><i class="o-bars"></i><i class="o-img"><b>${m}</b></i><i class="o-ln"></i><i class="o-cta"></i></span>`,
-  brand: m => `<span class="obj obj--brand"><i class="o-mark"><b>${m}</b></i><i class="o-ln o-ln--c"></i><i class="o-sw"><i></i><i></i><i></i></i></span>`,
-  print: m => `<span class="obj obj--menu"><i class="o-head"><b>${m}</b></i><i class="o-row"></i><i class="o-row"></i><i class="o-row"></i><i class="o-row o-row--s"></i></span>`
-};
-function stage(p) {
-  // up to 3 pieces: the main category in front, the others either side
-  const kinds = p.work.flatMap(([c, n]) => Array(Math.min(n, 3)).fill(c)).slice(0, 3);
-  const slots = kinds.length === 3 ? ['f', 'l', 'r'] : kinds.length === 2 ? ['f', 'l'] : ['f'];
-  return kinds.map((c, i) => `<span class="shot shot--${slots[i]} shot--${c}">${OBJ[c](p.mono)}</span>`).join('');
+const counts = p => Object.entries(p.pieces.reduce((o, x) => (o[x[1]] = (o[x[1]] || 0) + 1, o), {}));
+// fanned collage: up to 3 pieces, each in a box with its own ratio (object-fit: cover, never stretched)
+function collage(p) {
+  const pick = p.pieces.slice(0, 3), slots = ['f', 'l', 'r'];
+  return pick.map(([f, cat, w, h], i) => {
+    const shape = cat === 'story' ? 'story' : w / h > 1.25 ? 'wide' : 'tall';
+    return `<span class="shot shot--${slots[i]} shot--${shape}" style="--r:${(w / h).toFixed(3)}"><img src="assets/work/${f}-800.webp" alt="" width="${Math.round(w / 2)}" height="${Math.round(h / 2)}" loading="lazy" decoding="async"></span>`;
+  }).join('');
 }
 function renderWork() {
   gallery.innerHTML = PROJECTS.map((p, i) => `
-    <article class="proj" data-i="${i}" data-cats="${p.work.map(w => w[0]).join(' ')}" style="--c1:${p.c1};--c2:${p.c2}">
-      <div class="proj__card">
-        <div class="proj__stage" aria-hidden="true">${stage(p)}</div>
-        <div class="proj__info">
-          <h3 class="proj__title"><bdi>${p.name}</bdi><small>${p.ind[isEn() ? 1 : 0]}</small></h3>
-          <ul class="proj__tags">${p.work.map(([c, n]) => `<li>${catLabel(c)} <b>${n}</b></li>`).join('')}</ul>
-        </div>
-      </div>
+    <article class="proj" data-i="${i}" data-cats="${counts(p).map(c => c[0]).join(' ')}" style="--c1:${p.c1};--c2:${p.c2}">
+      <button type="button" class="proj__card" data-cursor="view" aria-label="${p.name} — ${isEn() ? 'view the work' : 'شوف الشغل'}">
+        <span class="proj__stage">${collage(p)}</span>
+        <span class="proj__info">
+          <span class="proj__title"><bdi>${p.name}</bdi><small>${p.ind[isEn() ? 1 : 0]}</small></span>
+          <span class="proj__foot">
+            <span class="proj__tags">${counts(p).map(([c, n]) => `<span>${catLabel(c)} <b>${n}</b></span>`).join('')}</span>
+            <span class="proj__go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </span>
+        </span>
+      </button>
     </article>`).join('');
   applyWorkFilter();
 }
@@ -290,6 +300,12 @@ lb.addEventListener('touchend', e => {
   if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) document.getElementById(dx < 0 ? 'lbNext' : 'lbPrev').click();
   else if (dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.5) closeLb();
 }, { passive: true });
+gallery.addEventListener('click', e => {
+  const card = e.target.closest('.proj'); if (!card || !e.target.closest('.proj__card')) return;
+  const p = PROJECTS[+card.dataset.i];
+  const pieces = p.pieces.filter(x => activeFilter === 'all' || x[1] === activeFilter); // a filter narrows the pieces too
+  openLb(0, pieces.map(([f, cat], n) => ({ src: `assets/work/${f}.webp`, cap: `${p.name} · ${catLabel(cat)} · ${n + 1}/${pieces.length}` })));
+});
 document.getElementById('lbClose').onclick = closeLb;
 document.getElementById('lbPrev').onclick = () => { idx = (idx - 1 + list.length) % list.length; show(); };
 document.getElementById('lbNext').onclick = () => { idx = (idx + 1) % list.length; show(); };
