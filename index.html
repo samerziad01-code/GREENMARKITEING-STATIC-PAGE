@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light" data-mode="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>Green Marketing Agency | جرين ماركيتنغ</title>
+<meta name="description" content="Green Marketing Agency — creative marketing, graphic design, production, and websites for every kind of business.">
+<meta name="theme-color" content="#EBE1D2">
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
+<link rel="apple-touch-icon" href="assets/logo-mark.png">
+<!-- theme + language before first paint (no flash) -->
+<script>
+(function () {
+  var d = document.documentElement, mode = 'auto', lang = 'ar';
+  try { mode = localStorage.getItem('gm-theme') || 'auto'; lang = localStorage.getItem('gm-lang') || 'ar'; } catch (e) {}
+  var dark = mode === 'dark' || (mode === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
+  d.dataset.mode = mode; d.dataset.theme = dark ? 'dark' : 'light';
+  if (lang === 'en') { d.lang = 'en'; d.dir = 'ltr'; }
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,400..700&family=Readex+Pro:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <img src="assets/logo-mark.png" alt="" width="120" height="79">
+  <span class="loader__bar"><i></i></span>
+</div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label" id="cursorLabel"></span></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#top" class="brand" aria-label="Green Marketing">
+      <img src="assets/logo-mark.png" alt="" width="56" height="37">
+      <span class="brand__name">GREEN MARKETING</span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about" data-i18n="nav.about">من نحن</a>
+      <a href="#services" data-i18n="nav.services">خدماتنا</a>
+      <a href="#websites" data-i18n="nav.web">المواقع</a>
+      <a href="#work" data-i18n="nav.work">أعمالنا</a>
+      <a href="#clients" data-i18n="nav.clients">عملاؤنا</a>
+      <a href="#contact" data-i18n="nav.contact">تواصل معنا</a>
+      <div class="theme-seg theme-seg--menu" role="group" aria-label="Theme">
+        <button type="button" data-theme-set="light"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><span data-i18n="th.light">فاتح</span></button>
+        <button type="button" data-theme-set="auto"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" class="fill"/></svg><span data-i18n="th.auto">تلقائي</span></button>
+        <button type="button" data-theme-set="dark"><svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg><span data-i18n="th.dark">داكن</span></button>
+      </div>
+    </nav>
+    <div class="nav__actions">
+      <div class="theme-seg theme-seg--bar" role="group" aria-label="Theme">
+        <button type="button" data-theme-set="light" aria-label="Light" title="Light"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg></button>
+        <button type="button" data-theme-set="auto" aria-label="Auto" title="Auto"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" class="fill"/></svg></button>
+        <button type="button" data-theme-set="dark" aria-label="Dark" title="Dark"><svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></button>
+      </div>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">EN</button>
+      <a class="btn btn--solid btn--sm hide-sm magnetic" href="#contact" data-i18n="nav.cta">ابدأ مشروعك</a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <canvas class="hero__3d" id="hero3d" aria-hidden="true"></canvas>
+  <div class="hero__aura" aria-hidden="true"></div>
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="pill reveal"><span class="pulse"></span><span data-i18n="hero.eyebrow">وكالة تسويق إبداعية · الأردن</span></p>
+      <h1 class="hero__title reveal">
+        <span class="line" data-i18n="hero.l1">نحوّل الأفكار إلى</span>
+        <span class="line"><span class="rotator" id="rotator" aria-live="off"><span class="rotator__word is-in">أثرٍ حقيقي</span></span></span>
+      </h1>
+      <p class="hero__lead reveal" data-i18n="hero.lead">شركة متخصصة في التسويق والخدمات الإعلانية، نساعد العلامات التجارية على بناء حضور قوي والوصول لجمهورها وتحقيق نتائج ملموسة من خلال حلول تسويقية وإبداعية متكاملة.</p>
+      <div class="hero__ctas reveal">
+        <a class="btn btn--solid btn--lg magnetic" href="https://wa.me/962796600022" target="_blank" rel="noopener" data-consult><span data-i18n="hero.cta1">احجز استشارة مجانية</span><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--ghost btn--lg magnetic" href="#websites" data-i18n="hero.cta2">شوف مواقعنا</a>
+      </div>
+    </div>
+    <div class="hero__visual reveal">
+      <div class="hero__stage" data-tilt="10">
+        <div class="hero__ring" aria-hidden="true"></div>
+        <div class="hero__card">
+          <img src="assets/mascot.jpg" alt="Green Marketing mascot working on a laptop" width="900" height="1110">
+        </div>
+        <div class="float float--a"><strong dir="ltr">25+</strong><span data-i18n="hero.f1">علامة تجارية وثقت بنا</span></div>
+        <div class="float float--b"><span class="dot"></span><span dir="ltr">Creative Minds. Smart Strategies. Real Results.</span></div>
+        <div class="float float--c"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span data-i18n="hero.f3">مواقع لكل المنشآت</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <ul class="stats reveal">
+      <li><b dir="ltr"><i data-count="25">25</i>+</b><span data-i18n="st.1">عميل وعلامة تجارية</span></li>
+      <li><b data-count="26">26</b><span data-i18n="st.2">خدمة تحت سقف واحد</span></li>
+      <li><b data-count="4">4</b><span data-i18n="st.3">أقسام متخصصة</span></li>
+      <li><b>360°</b><span data-i18n="st.4">تسويق متكامل</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__row"><div class="marquee__track">
+    <span>Branding</span><span>Social Media</span><span>SEO</span><span>Google Ads</span><span>Websites</span><span>Mobile Apps</span><span>Motion Graphic</span><span>Drone</span><span>Photoshoots</span><span>UI/UX</span>
+    <span>Branding</span><span>Social Media</span><span>SEO</span><span>Google Ads</span><span>Websites</span><span>Mobile Apps</span><span>Motion Graphic</span><span>Drone</span><span>Photoshoots</span><span>UI/UX</span>
+  </div></div>
+  <div class="marquee__row marquee__row--rev"><div class="marquee__track">
+    <span>تسويق رقمي</span><span>هوية بصرية</span><span>مواقع إلكترونية</span><span>تطبيقات</span><span>تصوير وإنتاج</span><span>متاجر إلكترونية</span><span>إعلانات ممولة</span><span>طباعة وتغليف</span>
+    <span>تسويق رقمي</span><span>هوية بصرية</span><span>مواقع إلكترونية</span><span>تطبيقات</span><span>تصوير وإنتاج</span><span>متاجر إلكترونية</span><span>إعلانات ممولة</span><span>طباعة وتغليف</span>
+  </div></div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="container about__grid">
+    <figure class="about__photo reveal reveal--clip">
+      <img src="assets/team.jpg" alt="The Green Marketing team" loading="lazy" width="698" height="928">
+      <figcaption dir="ltr">Great Team, Greater Results</figcaption>
+    </figure>
+    <div class="about__copy">
+      <p class="eyebrow reveal" data-i18n="about.eyebrow">من نحن — Hello!</p>
+      <p class="statement" id="statement" data-i18n="about.statement">جرين ماركيتنغ وكالة تسويق إبداعية تبني علامات تجارية تبرز وسط المنافسة، تتواصل مع جمهورها، وتحقق نموًا حقيقيًا.</p>
+      <p class="about__p reveal" data-i18n="about.p2">من الهوية البصرية وإدارة السوشال ميديا إلى صناعة المحتوى والتصميم الجرافيكي والتصوير وإنتاج الفيديو وتطوير المواقع والتسويق الرقمي، نجمع بين الإبداع والاستراتيجية لنصنع تجارب قوية لا تُنسى لعلامتك.</p>
+      <p class="about__motto reveal"><bdi dir="ltr">Creative Minds. Smart Strategies. Real Results.</bdi></p>
+      <h3 class="h4 reveal" data-i18n="about.skills">مهاراتنا التقنية</h3>
+      <ul class="skills reveal">
+        <li><b class="sk sk--ai">Ai</b>Illustrator</li>
+        <li><b class="sk sk--ps">Ps</b>Photoshop</li>
+        <li><b class="sk sk--pr">Pr</b>Premiere</li>
+        <li><b class="sk sk--ae">Ae</b>After Effects</li>
+        <li><b class="sk sk--fg" aria-hidden="true"><svg viewBox="0 0 38 57" width="15" height="22"><path fill="#1abcfe" d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/><path fill="#0acf83" d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z"/><path fill="#ff7262" d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z"/><path fill="#f24e1e" d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z"/><path fill="#a259ff" d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z"/></svg></b>Figma</li>
+        <li><b class="sk sk--x">AI</b>AI Tools</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES (bento) ============ -->
+<section class="section alt services" id="services">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow" data-i18n="svc.eyebrow">خدماتنا</p>
+      <h2 class="h2" data-i18n="svc.title">كل اللي علامتك بتحتاجه… تحت سقف واحد</h2>
+    </div>
+    <div class="bento">
+      <article class="bcard bcard--mkt reveal" data-spot>
+        <div class="bcard__media"><img src="assets/mascot.jpg" alt="" loading="lazy"></div>
+        <div class="bcard__body">
+          <span class="bcard__num">01</span>
+          <h3 data-i18n="svc.tab1">التسويق</h3>
+          <p class="bcard__lead" data-i18n="mkt.lead">رقمي وتقليدي — من أول خطة لحد آخر نتيجة.</p>
+          <ul class="tags">
+            <li data-i18n="mkt.d1t">تحسين محركات البحث SEO</li>
+            <li data-i18n="mkt.d2t">إدارة السوشال ميديا</li>
+            <li data-i18n="mkt.d3t">الهوية والطباعة</li>
+            <li data-i18n="mkt.d4t">إعلانات Google</li>
+            <li data-i18n="mkt.o1t">اللوحات الإعلانية</li>
+            <li data-i18n="mkt.o2t">الخطة التسويقية</li>
+          </ul>
+        </div>
+      </article>
+      <article class="bcard bcard--gfx reveal" data-spot>
+        <div class="bcard__media"><img src="assets/pen.jpg" alt="" loading="lazy"></div>
+        <div class="bcard__body">
+          <span class="bcard__num">02</span>
+          <h3 data-i18n="svc.tab2">التصميم الجرافيكي</h3>
+          <ul class="tags">
+            <li data-i18n="gfx.1">تصميم الهوية التجارية</li>
+            <li data-i18n="gfx.2">موشن جرافيك</li>
+            <li data-i18n="gfx.3">تصميم الشعارات</li>
+            <li data-i18n="gfx.4">تصاميم السوشال ميديا</li>
+            <li data-i18n="gfx.5">الطباعة والتغليف</li>
+            <li data-i18n="gfx.6">بروفايل الشركات</li>
+          </ul>
+        </div>
+      </article>
+      <article class="bcard bcard--prd reveal" data-spot>
+        <div class="bcard__media"><img src="assets/drone.jpg" alt="" loading="lazy"></div>
+        <div class="bcard__body">
+          <span class="bcard__num">03</span>
+          <h3>Green Production</h3>
+          <ul class="tags">
+            <li data-i18n="prd.1">تصوير درون</li>
+            <li data-i18n="prd.2">جلسات تصوير</li>
+            <li data-i18n="prd.3">تصوير فيديو</li>
+            <li data-i18n="prd.4">استوديو تصوير أطعمة</li>
+            <li data-i18n="prd.5">سينماتوغرافي</li>
+            <li data-i18n="prd.6">ستوري بورد</li>
+          </ul>
+        </div>
+      </article>
+      <article class="bcard bcard--it reveal" data-spot>
+        <div class="bcard__media"><img src="assets/it.jpg" alt="" loading="lazy"></div>
+        <div class="bcard__body">
+          <span class="bcard__num">04</span>
+          <h3 data-i18n="svc.tab4">خدمات تقنية المعلومات</h3>
+          <ul class="tags">
+            <li data-i18n="it.1t">تطوير مواقع مخصصة</li>
+            <li data-i18n="it.2t">تطبيقات iOS و Android</li>
+            <li data-i18n="it.4t">الاستضافة والبريد</li>
+            <li data-i18n="it.5t">الأنظمة والمنصات</li>
+            <li data-i18n="it.6t">متجر متعدد البائعين</li>
+            <li data-i18n="it.7t">تصميم UI/UX</li>
+            <li data-i18n="it.8t">برمجيات و QR Code</li>
+          </ul>
+          <a class="bcard__link" href="#websites"><span data-i18n="it.more">شوف أمثلة المواقع</span> <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WEBSITES ============ -->
+<section class="section websites" id="websites">
+  <div class="container">
+    <div class="section__head section__head--center reveal">
+      <p class="eyebrow" data-i18n="web.eyebrow">تصميم وتطوير المواقع</p>
+      <h2 class="h2 h2--xl" data-i18n-html="web.title">مواقع إلكترونية <em>لكل المنشآت</em></h2>
+      <p class="section__sub" data-i18n="web.sub">مطعم، عيادة، شركة عقارات، متجر أو مكتب سفر — نصمم ونبرمج موقعك من الصفر بهوية تشبهك، سريع، متجاوب، وجاهز يبيع. اختار نوع منشأتك وشوف بنفسك:</p>
+    </div>
+
+    <div class="industries" id="industries" role="tablist" aria-label="Industries"></div>
+
+    <div class="showcase reveal">
+      <div class="devices" id="devices" data-tilt="6">
+        <div class="laptop">
+          <div class="laptop__screen">
+            <div class="browser"><span></span><span></span><span></span><b class="browser__url" id="demoUrl">demo.greenagency/restaurant</b></div>
+            <div class="viewport viewport--desk" id="deskView"></div>
+          </div>
+          <div class="laptop__base"></div>
+        </div>
+        <div class="phone">
+          <div class="phone__island"></div>
+          <div class="viewport viewport--phone" id="phoneView"></div>
+        </div>
+      </div>
+      <aside class="showcase__info">
+        <p class="showcase__kicker" id="demoKicker">—</p>
+        <h3 class="showcase__name" id="demoName" dir="ltr">—</h3>
+        <ul class="showcase__feats" id="demoFeats"></ul>
+        <p class="showcase__note" data-i18n="web.note">* نماذج توضيحية بأسماء افتراضية لتوضيح أسلوبنا.</p>
+      </aside>
+    </div>
+
+    <div class="web-features reveal">
+      <div class="wf"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.5"/><rect x="17" y="8" width="5" height="11" rx="1"/><path d="M6 18h6"/></svg><b data-i18n="wf.1">متجاوب لكل الشاشات</b></div>
+      <div class="wf"><svg viewBox="0 0 24 24"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c-1 4-4 7-7 8M13 21l4-10 4 10M14.5 17h5"/></svg><b data-i18n="wf.2">عربي وإنجليزي</b></div>
+      <div class="wf"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><b data-i18n="wf.3">سرعة تحميل عالية</b></div>
+      <div class="wf"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><b data-i18n="wf.4">مهيأ لمحركات البحث SEO</b></div>
+      <div class="wf"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><b data-i18n="wf.5">لوحة تحكم سهلة</b></div>
+      <div class="wf"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg><b data-i18n="wf.6">دفع إلكتروني وواتساب</b></div>
+      <div class="wf"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14h3"/></svg><b data-i18n="wf.7">حجوزات وطلبات أونلاين</b></div>
+      <div class="wf"><svg viewBox="0 0 24 24"><path d="M4 7h16v10H4zM4 7l8 6 8-6"/></svg><b data-i18n="wf.8">استضافة ودومين وإيميلات</b></div>
+    </div>
+
+    <div class="every reveal">
+      <h3 class="every__title" data-i18n="web.every">بنشتغل مواقع لـ…</h3>
+      <ul class="every__grid" id="everyGrid"></ul>
+      <a class="btn btn--solid btn--lg magnetic" href="#contact"><span data-i18n="web.cta">اطلب موقع منشأتك</span><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section process">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow" data-i18n="pr.eyebrow">كيف نشتغل</p>
+      <h2 class="h2" data-i18n="pr.title">من الفكرة… للإطلاق… للنمو</h2>
+    </div>
+    <ol class="steps" id="steps">
+      <li class="step reveal"><span class="step__n">01</span><h3 data-i18n="pr.1t">نكتشف</h3><p data-i18n="pr.1">نفهم علامتك، جمهورك، منافسينك وأهدافك.</p></li>
+      <li class="step reveal"><span class="step__n">02</span><h3 data-i18n="pr.2t">نخطط</h3><p data-i18n="pr.2">استراتيجية واضحة للمحتوى والقنوات والميزانية.</p></li>
+      <li class="step reveal"><span class="step__n">03</span><h3 data-i18n="pr.3t">نبدع وننفذ</h3><p data-i18n="pr.3">تصميم، تصوير، محتوى، مواقع وحملات.</p></li>
+      <li class="step reveal"><span class="step__n">04</span><h3 data-i18n="pr.4t">نطلق ونكبّر</h3><p data-i18n="pr.4">نقيس النتائج ونحسّن باستمرار.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="section work" id="work">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow" data-i18n="work.eyebrow">أعمالنا — Portfolio</p>
+      <h2 class="h2" data-i18n="work.title">مختارات من أعمالنا الإبداعية</h2>
+      <p class="section__sub" data-i18n="work.sub">مجموعة من أعمالنا في الهوية البصرية والسوشال ميديا والتصميم الرقمي والطباعة — تجمع بين الأفكار الإبداعية والتنفيذ المدروس والاهتمام بأدق التفاصيل.</p>
+    </div>
+    <div class="filters" id="filters">
+      <button class="filter is-active" data-f="all" data-i18n="work.all">الكل</button>
+      <button class="filter" data-f="social" data-i18n="work.social">سوشال ميديا</button>
+      <button class="filter" data-f="story" data-i18n="work.story">ستوري إنستغرام</button>
+      <button class="filter" data-f="logo" data-i18n="work.logo">شعارات وهويات</button>
+      <button class="filter" data-f="print" data-i18n="work.print">طباعة</button>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<!-- ============ CASES ============ -->
+<section class="section cases">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Brands That Speak</p>
+      <h2 class="h2" data-i18n="case.title">قصص من خلف التصميم</h2>
+    </div>
+    <div class="cases__grid">
+      <article class="case reveal" data-open="work-26.jpg">
+        <img src="assets/work/work-26.jpg" alt="Future Targets jo brand identity" loading="lazy">
+        <div class="case__body">
+          <h3>Future Targets jo</h3>
+          <p data-i18n="case.ftj">يمثّل المستقبل وتحقيق الأهداف والتقدّم نحو النجاح، عبر دمج الحروف F + T + J في تصميم عصري يعكس الطموح والاتجاه والتطور.</p>
+        </div>
+      </article>
+      <article class="case reveal" data-open="work-28.jpg">
+        <img src="assets/work/work-28.jpg" alt="Well burger brand identity" loading="lazy">
+        <div class="case__body">
+          <h3>Well — made well. made right</h3>
+          <p data-i18n="case.well">طعام يُصنع بعناية وجودة وهدف. اليد والبرغر ترمزان للحِرفية، والبرتقالي الجريء يضيف الطاقة والشهية.</p>
+        </div>
+      </article>
+      <article class="case reveal" data-open="work-31.jpg">
+        <img src="assets/work/work-31.jpg" alt="Sensilis packaging box" loading="lazy">
+        <div class="case__body">
+          <h3>Sensilis — Packaging</h3>
+          <p data-i18n="case.sens">علبة تغليف مطبوعة لشاشة 32 إنش كهدية من Sensilis، بألوان وردية ناعمة وتصميم عصري يعكس هوية العلامة.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIENTS ============ -->
+<section class="section alt clients" id="clients">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow" data-i18n="cl.eyebrow">عملاؤنا</p>
+      <h2 class="h2" data-i18n="cl.title">شراكات حقيقية تتحوّل إلى نجاح دائم</h2>
+    </div>
+    <div class="clients__board reveal" data-tilt="4">
+      <img src="assets/clients.jpg" alt="Client logos: network, Afaq Royal, Holiday, Ropes, Dukkan Lahm, Palestine Drinks, Rawaq, Kaf Coffee Roasters, Oishi, Gloria Nail Lounge, Sensilis, Ahwet Mazaya, Engine Car Rental, Aya Sushi, Shahrazad, Farouj Al Sham, Well, Qeshta Factory, 360 Automotive, Stay & Play, Al Joud, Sawani, First Line, Dinar City" loading="lazy">
+    </div>
+  </div>
+  <div class="names" aria-hidden="true"><div class="names__track">
+    <span>network</span><span>Afaq Royal</span><span>Holiday</span><span>Ropes</span><span>Palestine Drinks</span><span>Rawaq</span><span>Kaf Coffee Roasters</span><span>Oishi</span><span>Gloria</span><span>Sensilis</span><span>Ahwet Mazaya</span><span>Engine</span><span>Aya Sushi</span><span>Shahrazad</span><span>Well</span><span>Qeshta Factory</span><span>360 Automotive</span><span>Stay &amp; Play</span><span>Sawani</span><span>First Line</span><span>Dinar City</span>
+    <span>network</span><span>Afaq Royal</span><span>Holiday</span><span>Ropes</span><span>Palestine Drinks</span><span>Rawaq</span><span>Kaf Coffee Roasters</span><span>Oishi</span><span>Gloria</span><span>Sensilis</span><span>Ahwet Mazaya</span><span>Engine</span><span>Aya Sushi</span><span>Shahrazad</span><span>Well</span><span>Qeshta Factory</span><span>360 Automotive</span><span>Stay &amp; Play</span><span>Sawani</span><span>First Line</span><span>Dinar City</span>
+  </div></div>
+</section>
+
+<!-- ============ BIG CTA ============ -->
+<section class="bigcta">
+  <div class="container bigcta__inner reveal">
+    <h2 class="bigcta__title" data-i18n-html="cta.title">جاهز تخلّي علامتك <em>حديث البلد؟</em></h2>
+    <div class="bigcta__btns">
+      <a class="btn btn--light btn--lg magnetic" href="https://wa.me/962796600022" target="_blank" rel="noopener" data-consult><span data-i18n="cta.wa">استشارة مجانية على واتساب</span><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn--outline-light btn--lg magnetic" href="#contact" data-i18n="cta.form">ابعث تفاصيل مشروعك</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact">
+  <div class="container contact__grid">
+    <div class="contact__copy reveal">
+      <img class="contact__logo" src="assets/logo-full.png" alt="Green Marketing" width="220">
+      <h2 class="h2" data-i18n="ct.title">أهلًا بك في Green!</h2>
+      <p data-i18n="ct.p">حيث تنمو الأفكار، وتتطور العلامات التجارية، وتبدأ إمكانيات جديدة. نحن شغوفون بصناعة حلول تساعد الأعمال على التقدّم وتحقيق أهدافها.</p>
+      <a class="consult-card" href="https://wa.me/962796600022" target="_blank" rel="noopener" data-consult>
+        <span class="consult-card__ic" aria-hidden="true"><svg viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm5.9 15.7c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6 0-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1 1 3 1 4 .8.7 0 1.9-.8 2.2-1.6.3-.8.3-1.4.2-1.6l-.6-.3Z"/></svg></span>
+        <span class="consult-card__txt"><b data-i18n="cs.title">استشارة مجانية على واتساب</b><span data-i18n="cs.sub">جاوب على 7 أسئلة سريعة وبنرجعلك بخطة تناسب مشروعك</span></span>
+        <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <ul class="contact__list">
+        <li><a href="tel:+962796600022"><span class="ic">☎</span><span dir="ltr">0796 600 022</span></a></li>
+        <li><a href="https://wa.me/962796600022" target="_blank" rel="noopener"><span class="ic">✆</span>WhatsApp</a></li>
+        <li><a href="mailto:info@greenmarketingjo.com"><span class="ic">✉</span>info@greenmarketingjo.com</a></li>
+      </ul>
+    </div>
+    <form class="form reveal" id="contactForm">
+      <h3 class="h3" data-i18n="ct.form">أخبرنا عن مشروعك</h3>
+      <label><span data-i18n="ct.name">الاسم</span><input name="name" required></label>
+      <label><span data-i18n="ct.phone">رقم الهاتف</span><input name="phone" type="tel" dir="ltr"></label>
+      <label><span data-i18n="ct.service">الخدمة المطلوبة</span>
+        <select name="service">
+          <option data-i18n="svc.tab1">التسويق</option>
+          <option data-i18n="svc.tab2">التصميم الجرافيكي</option>
+          <option>Green Production</option>
+          <option data-i18n="ct.optweb">موقع إلكتروني</option>
+          <option data-i18n="svc.tab4">خدمات تقنية المعلومات</option>
+        </select>
+      </label>
+      <label><span data-i18n="ct.msg">رسالتك</span><textarea name="msg" rows="4" required></textarea></label>
+      <button class="btn btn--solid btn--block" type="submit" data-i18n="ct.send">أرسل الرسالة</button>
+      <p class="form__hint"><span data-i18n="ct.hint">سيتم فتح بريدك الإلكتروني لإرسال الرسالة مباشرة.</span> <span data-i18n="ct.agree">بإرسالك للرسالة فإنك توافق على</span> <a href="terms.html" data-terms="top" data-i18n="ft.terms">الشروط والأحكام</a>.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="#top" class="brand brand--light">
+      <img src="assets/logo-mark-white.png" alt="" width="48" height="32">
+      <span class="brand__name">GREEN MARKETING</span>
+    </a>
+    <p data-i18n="ft.tag">نحوّل الأفكار إلى أثر.</p>
+    <nav class="footer__links" aria-label="Legal">
+      <a class="legal-btn" href="terms.html" data-terms="top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h7"/></svg><span data-i18n="ft.terms">الشروط والأحكام</span></a>
+      <a class="legal-btn" href="terms.html#privacy" data-terms="privacy"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-i18n="ft.privacy">سياسة الخصوصية</span></a>
+      <a href="#contact" data-i18n="nav.contact">تواصل معنا</a>
+    </nav>
+  </div>
+  <div class="footer__word" aria-hidden="true">GREEN MARKETING</div>
+  <div class="container footer__bottom">
+    <p><bdi dir="ltr">© <span id="year"></span> Green Marketing Agency.</bdi> <span data-i18n="ft.rights">جميع الحقوق محفوظة.</span></p>
+    <p class="footer__note" data-i18n="ft.note">جميع التصاميم والأعمال المعروضة ملك لأصحابها وتُعرض بإذنهم كجزء من أعمال الوكالة.</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/962796600022" target="_blank" rel="noopener" aria-label="WhatsApp consultation" data-consult>
+  <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7Zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6 0-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1 1 3 1 4 .8.7 0 1.9-.8 2.2-1.6.3-.8.3-1.4.2-1.6l-.6-.3Z"/></svg>
+</a>
+
+<dialog class="tmodal" id="termsModal" aria-labelledby="tmodalTitle">
+  <div class="tmodal__head">
+    <div>
+      <p class="tmodal__kicker">Green Marketing Agency</p>
+      <h2 class="tmodal__title" id="tmodalTitle" data-i18n="ft.terms">الشروط والأحكام</h2>
+    </div>
+    <button class="tmodal__close" type="button" data-close-terms aria-label="Close">×</button>
+  </div>
+  <div class="tmodal__tabs">
+    <button type="button" class="tmodal__tab is-active" data-jump="top" data-i18n="ft.terms">الشروط والأحكام</button>
+    <button type="button" class="tmodal__tab" data-jump="privacy" data-i18n="ft.privacy">سياسة الخصوصية</button>
+  </div>
+  <div class="tmodal__body" id="termsBody"><p class="tmodal__loading">…</p></div>
+  <div class="tmodal__foot">
+    <a class="btn btn--ghost btn--sm" href="terms.html" target="_blank" rel="noopener" data-i18n="tm.full">فتح كصفحة كاملة</a>
+    <button class="btn btn--solid btn--sm" type="button" data-close-terms data-i18n="tm.ok">تمام، فهمت</button>
+  </div>
+</dialog>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox__close" id="lbClose" aria-label="Close">×</button>
+  <button class="lightbox__nav lightbox__prev" id="lbPrev" aria-label="Previous">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lightbox__nav lightbox__next" id="lbNext" aria-label="Next">›</button>
+</div>
+
+<script src="websites.js"></script>
+<script src="script.js"></script>
+<script src="consult.js"></script>
+<script src="agent.js"></script>
+</body>
+</html>

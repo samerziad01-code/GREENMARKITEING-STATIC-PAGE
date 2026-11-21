@@ -1,0 +1,13 @@
+# dependencies / build
+node_modules/
+.vercel/
+
+# secrets — the Claude API key lives only in the hosting dashboard (Vercel env vars)
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/

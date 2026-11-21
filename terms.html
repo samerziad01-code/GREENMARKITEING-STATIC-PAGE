@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light" data-mode="auto">
+<head>
+<script>
+(function () {
+  var d = document.documentElement, mode = 'auto', lang = 'ar';
+  try { mode = localStorage.getItem('gm-theme') || 'auto'; lang = localStorage.getItem('gm-lang') || 'ar'; } catch (e) {}
+  var dark = mode === 'dark' || (mode === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
+  d.dataset.mode = mode; d.dataset.theme = dark ? 'dark' : 'light';
+  if (lang === 'en') { d.lang = 'en'; d.dir = 'ltr'; }
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>الشروط والأحكام | Green Marketing Agency</title>
+<meta name="description" content="Terms & Conditions and Privacy Policy of Green Marketing Agency.">
+<meta name="theme-color" content="#EBE1D2">
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
+<link rel="apple-touch-icon" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..800;1,8..60,400&family=Readex+Pro:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="legal-page">
+
+<header class="nav is-scrolled">
+  <div class="container nav__inner">
+    <a href="index.html" class="brand" aria-label="Green Marketing">
+      <img src="assets/logo-mark.png" alt="" width="56" height="37">
+      <span class="brand__name">GREEN MARKETING</span>
+    </a>
+    <div class="nav__actions">
+      <div class="theme-seg theme-seg--bar theme-seg--keep" role="group" aria-label="Theme">
+        <button type="button" data-theme-set="light" aria-label="Light" title="Light"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg></button>
+        <button type="button" data-theme-set="auto" aria-label="Auto" title="Auto"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" class="fill"/></svg></button>
+        <button type="button" data-theme-set="dark" aria-label="Dark" title="Dark"><svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg></button>
+      </div>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">EN</button>
+      <a class="btn btn--ghost btn--sm" href="index.html"><span data-lang="ar">→ الرئيسية</span><span data-lang="en">← Home</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="container legal__grid">
+    <aside class="legal__toc">
+      <p class="eyebrow"><span data-lang="ar">المحتويات</span><span data-lang="en">Contents</span></p>
+      <ol>
+        <li><a href="#t1"><span data-lang="ar">التعريفات</span><span data-lang="en">Definitions</span></a></li>
+        <li><a href="#t2"><span data-lang="ar">نطاق الخدمات</span><span data-lang="en">Scope of services</span></a></li>
+        <li><a href="#t3"><span data-lang="ar">عروض الأسعار والدفع</span><span data-lang="en">Quotes & payment</span></a></li>
+        <li><a href="#t4"><span data-lang="ar">التعديلات والموافقات</span><span data-lang="en">Revisions & approvals</span></a></li>
+        <li><a href="#t5"><span data-lang="ar">التزامات العميل</span><span data-lang="en">Client obligations</span></a></li>
+        <li><a href="#t6"><span data-lang="ar">الملكية الفكرية</span><span data-lang="en">Intellectual property</span></a></li>
+        <li><a href="#t7"><span data-lang="ar">الإعلانات والمنصات</span><span data-lang="en">Ads & third-party platforms</span></a></li>
+        <li><a href="#t8"><span data-lang="ar">الاستضافة والتطوير</span><span data-lang="en">Hosting & development</span></a></li>
+        <li><a href="#t9"><span data-lang="ar">السرية</span><span data-lang="en">Confidentiality</span></a></li>
+        <li><a href="#t10"><span data-lang="ar">الإلغاء والإنهاء</span><span data-lang="en">Cancellation</span></a></li>
+        <li><a href="#t11"><span data-lang="ar">حدود المسؤولية</span><span data-lang="en">Limitation of liability</span></a></li>
+        <li><a href="#privacy"><span data-lang="ar">سياسة الخصوصية</span><span data-lang="en">Privacy policy</span></a></li>
+        <li><a href="#t13"><span data-lang="ar">القانون الواجب التطبيق</span><span data-lang="en">Governing law</span></a></li>
+        <li><a href="#t14"><span data-lang="ar">حقوق النشر</span><span data-lang="en">Copyright</span></a></li>
+      </ol>
+    </aside>
+
+    <article class="legal__body">
+      <!-- ===================== ARABIC ===================== -->
+      <div data-lang="ar">
+        <p class="eyebrow">Green Marketing Agency</p>
+        <h1 class="h2">الشروط والأحكام</h1>
+        <p class="legal__meta">آخر تحديث: 21 تشرين الثاني 2026</p>
+        <p>مرحبًا بك في موقع Green Marketing Agency ("الوكالة"، "نحن"). باستخدامك لهذا الموقع أو طلبك لأي من خدماتنا فإنك توافق على الالتزام بهذه الشروط والأحكام. يُرجى قراءتها بعناية قبل البدء بأي تعامل معنا.</p>
+
+        <h2 id="t1">1. التعريفات</h2>
+        <ul>
+          <li><b>الوكالة:</b> Green Marketing Agency وفريق عملها.</li>
+          <li><b>العميل:</b> أي شخص أو جهة تطلب خدمات الوكالة أو تتعاقد معها.</li>
+          <li><b>الخدمات:</b> خدمات التسويق الرقمي والتقليدي، والتصميم الجرافيكي، والإنتاج المرئي (<bdi>Green Production</bdi>)، وخدمات تقنية المعلومات وتطوير المواقع والتطبيقات.</li>
+          <li><b>المخرجات:</b> التصاميم والمحتوى والفيديوهات والأنظمة والملفات التي تسلّمها الوكالة للعميل.</li>
+        </ul>
+
+        <h2 id="t2">2. نطاق الخدمات</h2>
+        <p>يُحدَّد نطاق كل مشروع وتفاصيله ومدته في عرض السعر أو الاتفاقية الموقّعة بين الطرفين. أي عمل خارج هذا النطاق يُعتبر عملًا إضافيًا ويُسعَّر بشكل منفصل بعد موافقة العميل.</p>
+
+        <h2 id="t3">3. عروض الأسعار والدفع</h2>
+        <ul>
+          <li>عروض الأسعار صالحة لمدة 14 يومًا من تاريخ إصدارها ما لم يُذكر خلاف ذلك.</li>
+          <li>يبدأ العمل بعد استلام الدفعة المقدّمة المتفق عليها، ويُستكمل باقي المبلغ حسب جدول الدفعات في الاتفاقية.</li>
+          <li>الباقات الشهرية (مثل إدارة السوشال ميديا) تُدفع مقدمًا في بداية كل شهر.</li>
+          <li>الأسعار لا تشمل ميزانيات الإعلانات المدفوعة أو تكاليف الطباعة أو الاستضافة أو أي رسوم لجهات خارجية ما لم يُنص على ذلك صراحة.</li>
+          <li>يحق للوكالة إيقاف العمل مؤقتًا في حال تأخر الدفع لحين تسوية المبالغ المستحقة.</li>
+        </ul>
+
+        <h2 id="t4">4. التعديلات والموافقات</h2>
+        <ul>
+          <li>يشمل كل مشروع عدد جولات تعديل محدد في عرض السعر، وأي تعديلات إضافية تُحتسب بشكل منفصل.</li>
+          <li>تُعتبر موافقة العميل على المخرجات (كتابيًا أو عبر البريد أو الواتساب) موافقة نهائية، ولا تتحمل الوكالة مسؤولية أي أخطاء يتم اكتشافها بعد الموافقة والنشر أو الطباعة.</li>
+          <li>في حال عدم رد العميل خلال 7 أيام عمل من إرسال المخرجات، تُعتبر موافقًا عليها.</li>
+        </ul>
+
+        <h2 id="t5">5. التزامات العميل</h2>
+        <ul>
+          <li>تزويد الوكالة بالمعلومات والمحتوى والشعارات والصور اللازمة في الوقت المحدد.</li>
+          <li>ضمان أن أي مواد يقدمها العميل لا تنتهك حقوق ملكية فكرية لأي طرف آخر، وتحمّل المسؤولية الكاملة عنها.</li>
+          <li>أي تأخير من طرف العميل قد يؤدي إلى تعديل الجدول الزمني للتسليم.</li>
+        </ul>
+
+        <h2 id="t6">6. الملكية الفكرية</h2>
+        <ul>
+          <li>تنتقل ملكية المخرجات النهائية المعتمدة إلى العميل بعد سداد كامل المستحقات.</li>
+          <li>تبقى المسودات والأفكار غير المعتمدة والملفات المفتوحة (Source Files) ملكًا للوكالة ما لم يُتفق على تسليمها.</li>
+          <li>يحق للوكالة عرض الأعمال المنفذة ضمن معرض أعمالها (Portfolio) وموقعها وحساباتها على وسائل التواصل، ما لم يطلب العميل خلاف ذلك كتابيًا.</li>
+          <li>الخطوط والصور والموسيقى المرخّصة من جهات خارجية تخضع لشروط ترخيص أصحابها.</li>
+        </ul>
+
+        <h2 id="t7">7. الإعلانات والمنصات الخارجية</h2>
+        <p>تعمل الوكالة على منصات مثل Google و Meta (فيسبوك وإنستغرام) و TikTok وغيرها، وتخضع الحملات لسياسات هذه المنصات. لا تضمن الوكالة نتائج محددة (مثل عدد المبيعات أو ترتيب معيّن في محركات البحث)، لأنها تعتمد على عوامل خارجة عن سيطرتها، لكنها تلتزم ببذل أفضل جهد مهني لتحقيق أهداف العميل.</p>
+
+        <h2 id="t8">8. الاستضافة وتطوير المواقع والتطبيقات</h2>
+        <ul>
+          <li>تُجدَّد خدمات الاستضافة والدومين والبريد الإلكتروني سنويًا، والعميل مسؤول عن دفع رسوم التجديد في وقتها.</li>
+          <li>تشمل فترة الدعم الفني المجانية بعد التسليم المدة المذكورة في الاتفاقية، وبعدها تُقدَّم خدمات الصيانة بعقد منفصل.</li>
+          <li>نشر التطبيقات على App Store و Google Play يخضع لموافقة ومراجعة Apple و Google.</li>
+        </ul>
+
+        <h2 id="t9">9. السرية</h2>
+        <p>يلتزم الطرفان بالحفاظ على سرية أي معلومات تجارية أو تقنية يتم تبادلها خلال فترة التعاون، وعدم الإفصاح عنها لأي طرف ثالث دون موافقة مسبقة.</p>
+
+        <h2 id="t10">10. الإلغاء والإنهاء</h2>
+        <ul>
+          <li>يحق لأي طرف إنهاء التعاقد بإشعار كتابي مدته 30 يومًا للباقات الشهرية.</li>
+          <li>في حال إلغاء المشروع من قبل العميل، تكون الدفعة المقدمة غير مستردة، ويُحاسب العميل على الأعمال المنجزة حتى تاريخ الإلغاء.</li>
+        </ul>
+
+        <h2 id="t11">11. حدود المسؤولية</h2>
+        <p>لا تتجاوز مسؤولية الوكالة في أي حال قيمة المبالغ التي دفعها العميل مقابل الخدمة محل النزاع، ولا تتحمل الوكالة مسؤولية أي أضرار غير مباشرة أو خسارة أرباح أو انقطاع خدمات من مزودين خارجيين.</p>
+
+        <h2 id="privacy">12. سياسة الخصوصية</h2>
+        <ul>
+          <li>نجمع فقط المعلومات التي ترسلها لنا طوعًا (مثل الاسم ورقم الهاتف والبريد ونص الرسالة) عبر نموذج التواصل أو الواتساب أو البريد الإلكتروني.</li>
+          <li>نستخدم هذه المعلومات فقط للرد على استفسارك وتقديم الخدمة، ولا نبيعها أو نشاركها مع أي طرف ثالث لأغراض تسويقية.</li>
+          <li>يحفظ الموقع تفضيلات اللغة والمظهر في متصفحك (<bdi>Local Storage</bdi>)، ومحادثة المساعد الذكي لحين إغلاق الصفحة فقط، ولا يستخدم ملفات تتبع إعلانية.</li>
+          <li>الرسائل التي تكتبها للمساعد الذكي تُرسَل إلى مزوّد ذكاء اصطناعي (<bdi>Anthropic</bdi>) لمعالجتها وتوليد الرد فقط؛ يُرجى عدم مشاركة معلومات حساسة في المحادثة.</li>
+          <li>يمكنك طلب تعديل أو حذف بياناتك في أي وقت بالتواصل معنا.</li>
+        </ul>
+
+        <h2 id="t13">13. القانون الواجب التطبيق</h2>
+        <p>تخضع هذه الشروط وتُفسَّر وفقًا لقوانين المملكة الأردنية الهاشمية، وتختص محاكم عمّان بالنظر في أي نزاع ينشأ عنها، مع السعي أولًا لحل أي خلاف وديًا.</p>
+
+        <h2 id="t14">14. حقوق النشر</h2>
+        <p>© 2026 Green Marketing Agency. جميع الحقوق محفوظة. جميع محتويات هذا الموقع، بما فيها الشعار والنصوص والتصاميم والصور، محمية بموجب قوانين حقوق الملكية الفكرية، ولا يجوز نسخها أو إعادة نشرها أو استخدامها لأغراض تجارية دون إذن كتابي مسبق من الوكالة. شعارات وتصاميم العملاء المعروضة ملك لأصحابها وتُعرض بإذنهم.</p>
+
+        <h2>تعديل الشروط</h2>
+        <p>يحق للوكالة تعديل هذه الشروط في أي وقت، ويسري التعديل من تاريخ نشره على هذه الصفحة.</p>
+
+        <div class="legal__contact">
+          <h3>للاستفسارات</h3>
+          <p><a href="tel:+962796600022" dir="ltr">0796 600 022</a> · <a href="mailto:info@greenmarketingjo.com">info@greenmarketingjo.com</a></p>
+        </div>
+      </div>
+
+      <!-- ===================== ENGLISH ===================== -->
+      <div data-lang="en">
+        <p class="eyebrow">Green Marketing Agency</p>
+        <h1 class="h2">Terms &amp; Conditions</h1>
+        <p class="legal__meta">Last updated: 21 November 2026</p>
+        <p>Welcome to the Green Marketing Agency website ("the Agency", "we", "us"). By using this website or requesting any of our services, you agree to be bound by these Terms &amp; Conditions. Please read them carefully before working with us.</p>
+
+        <h2 id="t1-en">1. Definitions</h2>
+        <ul>
+          <li><b>Agency:</b> Green Marketing Agency and its team.</li>
+          <li><b>Client:</b> any person or entity that requests or contracts the Agency's services.</li>
+          <li><b>Services:</b> digital and offline marketing, graphic design, visual production (Green Production), IT services, and website and app development.</li>
+          <li><b>Deliverables:</b> designs, content, videos, systems and files delivered by the Agency to the Client.</li>
+        </ul>
+
+        <h2 id="t2-en">2. Scope of services</h2>
+        <p>The scope, details and timeline of each project are defined in the quotation or signed agreement. Any work outside that scope is considered additional and is priced separately after the Client's approval.</p>
+
+        <h2 id="t3-en">3. Quotes &amp; payment</h2>
+        <ul>
+          <li>Quotations are valid for 14 days from their issue date unless stated otherwise.</li>
+          <li>Work starts once the agreed down payment is received; the balance is paid according to the payment schedule in the agreement.</li>
+          <li>Monthly packages (such as social media management) are paid in advance at the start of each month.</li>
+          <li>Prices exclude paid advertising budgets, printing, hosting and any third-party fees unless explicitly stated.</li>
+          <li>The Agency may pause work if payments are overdue until outstanding amounts are settled.</li>
+        </ul>
+
+        <h2 id="t4-en">4. Revisions &amp; approvals</h2>
+        <ul>
+          <li>Each project includes the number of revision rounds stated in the quotation; extra revisions are charged separately.</li>
+          <li>The Client's approval of deliverables (in writing, by email or WhatsApp) is final. The Agency is not responsible for errors discovered after approval and publishing or printing.</li>
+          <li>If the Client does not respond within 7 business days of receiving deliverables, they are deemed approved.</li>
+        </ul>
+
+        <h2 id="t5-en">5. Client obligations</h2>
+        <ul>
+          <li>Provide the information, content, logos and images needed on time.</li>
+          <li>Ensure any materials supplied do not infringe third-party intellectual property rights, and bear full responsibility for them.</li>
+          <li>Delays on the Client's side may change the delivery timeline.</li>
+        </ul>
+
+        <h2 id="t6-en">6. Intellectual property</h2>
+        <ul>
+          <li>Ownership of the final approved deliverables transfers to the Client once all fees are paid in full.</li>
+          <li>Drafts, unapproved concepts and source files remain the Agency's property unless their delivery is agreed.</li>
+          <li>The Agency may showcase completed work in its portfolio, website and social media accounts unless the Client requests otherwise in writing.</li>
+          <li>Fonts, stock images and music licensed from third parties are subject to their owners' license terms.</li>
+        </ul>
+
+        <h2 id="t7-en">7. Advertising &amp; third-party platforms</h2>
+        <p>The Agency works on platforms such as Google, Meta (Facebook &amp; Instagram), TikTok and others, and campaigns are subject to these platforms' policies. The Agency does not guarantee specific results (such as sales figures or a specific search ranking), as these depend on factors outside its control, but commits to its best professional effort to achieve the Client's goals.</p>
+
+        <h2 id="t8-en">8. Hosting, websites &amp; apps</h2>
+        <ul>
+          <li>Hosting, domain and email services renew annually; the Client is responsible for paying renewal fees on time.</li>
+          <li>Free technical support after delivery covers the period stated in the agreement; maintenance afterwards is offered under a separate contract.</li>
+          <li>Publishing apps on the App Store and Google Play is subject to review and approval by Apple and Google.</li>
+        </ul>
+
+        <h2 id="t9-en">9. Confidentiality</h2>
+        <p>Both parties agree to keep confidential any business or technical information exchanged during the collaboration and not to disclose it to third parties without prior consent.</p>
+
+        <h2 id="t10-en">10. Cancellation &amp; termination</h2>
+        <ul>
+          <li>Either party may terminate monthly packages with 30 days' written notice.</li>
+          <li>If the Client cancels a project, the down payment is non-refundable and the Client is charged for work completed up to the cancellation date.</li>
+        </ul>
+
+        <h2 id="t11-en">11. Limitation of liability</h2>
+        <p>The Agency's liability shall in no case exceed the amounts paid by the Client for the service in dispute. The Agency is not liable for indirect damages, loss of profit, or outages of third-party providers.</p>
+
+        <h2 id="privacy-en">12. Privacy policy</h2>
+        <ul>
+          <li>We only collect information you voluntarily send us (such as name, phone number, email and message) via the contact form, WhatsApp or email.</li>
+          <li>We use it only to respond to your enquiry and deliver our services; we never sell or share it with third parties for marketing purposes.</li>
+          <li>The website stores your language and theme preferences in your browser (Local Storage), and the AI assistant chat only until you close the page; it does not use advertising trackers.</li>
+          <li>Messages you type to the AI assistant are sent to an AI provider (Anthropic) solely to process them and generate a reply; please do not share sensitive information in the chat.</li>
+          <li>You may request correction or deletion of your data at any time by contacting us.</li>
+        </ul>
+
+        <h2 id="t13-en">13. Governing law</h2>
+        <p>These terms are governed by and interpreted under the laws of the Hashemite Kingdom of Jordan, and the courts of Amman have jurisdiction over any dispute, with an effort first to resolve any disagreement amicably.</p>
+
+        <h2 id="t14-en">14. Copyright</h2>
+        <p>© 2026 Green Marketing Agency. All rights reserved. All content on this website, including the logo, text, designs and images, is protected by intellectual property laws and may not be copied, republished or used commercially without the Agency's prior written permission. Client logos and designs shown belong to their respective owners and are displayed with permission.</p>
+
+        <h2>Changes to these terms</h2>
+        <p>The Agency may update these terms at any time; changes take effect from the date they are published on this page.</p>
+
+        <div class="legal__contact">
+          <h3>Questions?</h3>
+          <p><a href="tel:+962796600022">0796 600 022</a> · <a href="mailto:info@greenmarketingjo.com">info@greenmarketingjo.com</a></p>
+        </div>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="index.html" class="brand brand--light">
+      <img src="assets/logo-mark-white.png" alt="" width="48" height="32">
+      <span class="brand__name">GREEN MARKETING</span>
+    </a>
+    <nav class="footer__links" aria-label="Legal">
+      <a href="index.html"><span data-lang="ar">الرئيسية</span><span data-lang="en">Home</span></a>
+      <a href="#privacy"><span data-lang="ar">سياسة الخصوصية</span><span data-lang="en">Privacy Policy</span></a>
+      <a href="index.html#contact"><span data-lang="ar">تواصل معنا</span><span data-lang="en">Contact</span></a>
+    </nav>
+  </div>
+  <div class="container footer__bottom">
+    <p><bdi dir="ltr">© <span id="year">2026</span> Green Marketing Agency.</bdi> <span data-lang="ar">جميع الحقوق محفوظة.</span><span data-lang="en">All rights reserved.</span></p>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('langBtn'), root = document.documentElement;
+  const sync = () => {
+    const en = root.lang === 'en';
+    btn.textContent = en ? 'ع' : 'EN';
+    document.title = en ? 'Terms & Conditions | Green Marketing Agency' : 'الشروط والأحكام | Green Marketing Agency';
+    // TOC anchors point to the visible language's headings
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      const id = a.getAttribute('href').replace(/^#/, '').replace(/-en$/, '');
+      a.setAttribute('href', '#' + (en ? id + '-en' : id));
+    });
+  };
+  btn.addEventListener('click', () => {
+    const en = root.lang !== 'en';
+    root.lang = en ? 'en' : 'ar'; root.dir = en ? 'ltr' : 'rtl';
+    try { localStorage.setItem('gm-lang', root.lang); } catch (e) {}
+    sync();
+  });
+  sync();
+  // theme: light / dark / auto (shared with the home page)
+  const mq = matchMedia('(prefers-color-scheme: dark)'), meta = document.querySelector('meta[name="theme-color"]');
+  const applyTheme = () => {
+    const mode = root.dataset.mode || 'auto', dark = mode === 'dark' || (mode === 'auto' && mq.matches);
+    root.dataset.theme = dark ? 'dark' : 'light'; meta.setAttribute('content', dark ? '#070f09' : '#EBE1D2');
+    document.querySelectorAll('[data-theme-set]').forEach(b => b.setAttribute('aria-pressed', b.dataset.themeSet === mode));
+  };
+  document.querySelectorAll('[data-theme-set]').forEach(b => b.addEventListener('click', () => {
+    root.dataset.mode = b.dataset.themeSet; try { localStorage.setItem('gm-theme', b.dataset.themeSet); } catch (e) {} applyTheme();
+  }));
+  mq.addEventListener ? mq.addEventListener('change', applyTheme) : mq.addListener(applyTheme);
+  applyTheme();
+  document.getElementById('year').textContent = new Date().getFullYear();
+  if (location.hash === '#privacy' && root.lang === 'en') document.getElementById('privacy-en').scrollIntoView();
+</script>
+</body>
+</html>
