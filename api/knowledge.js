@@ -56,7 +56,7 @@ Portfolio highlights: social media designs for food & beverage brands, Instagram
 
 ## Contact
 Office: Wasfi Al-Tal St. (Gardens Street), Amman, Jordan — Google Maps: https://maps.app.goo.gl/KFzNALZsbk7PUZEL9 — Working hours: Sunday to Thursday, 9:00 AM – 5:00 PM (closed Friday and Saturday).
-Phone & WhatsApp: 0796 600 022 (+962 796 600 022). Email: info@greenmarketingjo.com. Instagram: @greenmarketing.jo (https://www.instagram.com/greenmarketing.jo/) — latest work, reels and behind-the-scenes.
+Phone & WhatsApp: 0796 600 022 (+962 796 600 022). Email: info@greenmarketingjo.com. Instagram: @greenmarketing.jo (https://www.instagram.com/greenmarketing.jo/) — latest work, reels and behind-the-scenes. Facebook: https://www.facebook.com/greenagency.jo. LinkedIn: https://www.linkedin.com/company/green-marketing-agency-jo/.
 Free consultation: a short questionnaire on the website that sends a ready WhatsApp message to the team.
 
 ## Policies (summary)
