@@ -53,7 +53,11 @@ const EN = {
   'ft.tag': 'We turn ideas into impact.', 'ft.terms': 'Terms & Conditions', 'ft.privacy': 'Privacy Policy', 'ft.rights': 'All rights reserved.',
   'ft.note': 'All designs and works shown belong to their respective owners and are displayed with permission as part of the agency portfolio.',
   'cursor.view': 'View',
-  'tm.full': 'Open as full page', 'tm.ok': 'Got it'
+  'tm.full': 'Open as full page', 'tm.ok': 'Got it',
+  'rl.tap': 'Tap to play the video', 'rl.eyebrow': 'From Instagram', 'rl.title': 'Not all marketing… is marketing',
+  'rl.sub': 'See our latest work from behind the scenes — follow us for shoots, designs and results as they happen.',
+  'rl.followers': 'followers on Instagram', 'rl.follow': 'Follow us on Instagram', 'rl.note': 'Playing the video loads content from Instagram.',
+  'ct.map': 'Wasfi Al-Tal St., Amman'
 };
 const ROTATE = {
   ar: ['أثرٍ حقيقي', 'مبيعات', 'علامات مميزة', 'مواقع خرافية'],
@@ -267,6 +271,20 @@ tBody?.addEventListener('scroll', () => {
 }, { passive: true });
 // prefetch quietly so the popup opens instantly
 addEventListener('load', () => setTimeout(() => loadTerms().catch(() => { termsLoaded = null; }), 2500));
+
+// ---------- Instagram reel: load the official embed only when the visitor presses play ----------
+const reelBtn = document.getElementById('reelPlay');
+reelBtn?.addEventListener('click', () => {
+  const id = reelBtn.dataset.reel;
+  const f = document.createElement('iframe');
+  f.className = 'reel__frame';
+  f.src = `https://www.instagram.com/reel/${encodeURIComponent(id)}/embed/`;
+  f.title = 'Green Marketing Agency — Instagram reel';
+  f.allow = 'autoplay; encrypted-media; picture-in-picture; clipboard-write';
+  f.setAttribute('allowfullscreen', '');
+  f.loading = 'eager';
+  reelBtn.replaceWith(f);
+});
 
 // ---------- contact form -> email ----------
 document.getElementById('contactForm').addEventListener('submit', e => {

@@ -34,7 +34,8 @@
       WHATSAPP: { ar: '🟢 احكي معنا واتساب', en: '🟢 Chat on WhatsApp' },
       WEBSITES: { ar: '🌐 شوف أمثلة المواقع', en: '🌐 See website examples' },
       WORK: { ar: '🎨 شوف أعمالنا', en: '🎨 See our work' },
-      CONTACT: { ar: '📞 معلومات التواصل', en: '📞 Contact details' }
+      CONTACT: { ar: '📞 معلومات التواصل', en: '📞 Contact details' },
+      MAP: { ar: '📍 موقعنا على الخريطة', en: '📍 Open in Google Maps' }
     }
   };
 
@@ -79,7 +80,7 @@
     { id: 'contact', k: ['انستغرامكم', 'انستاكم', 'حسابكم', 'صفحتكم', 'your instagram', 'instagram account', 'تواصل', 'رقم', 'هاتف', 'تلفون', 'ايميل', 'بريد', 'واتس', 'contact', 'phone', 'email', 'whatsapp', 'call'],
       a: { ar: 'بتقدر تتواصل معنا على:\n- **واتساب / هاتف:** 0796 600 022\n- **إيميل:** info@greenmarketingjo.com\n- **إنستغرام:** @greenmarketing.jo\nأو جرّب الاستشارة المجانية وبترجعلك رسالة جاهزة بتفاصيل مشروعك.\n[[WHATSAPP]]\n[[CONSULT]]', en: 'You can reach us on:\n- **WhatsApp / phone:** 0796 600 022\n- **Email:** info@greenmarketingjo.com\n- **Instagram:** @greenmarketing.jo\nOr try the free consultation for a ready-made message with your project details.\n[[WHATSAPP]]\n[[CONSULT]]' } },
     { id: 'where', k: ['وين', 'موقعكم', 'عنوان', 'مكتب', 'ساعات', 'دوام', 'where', 'address', 'office', 'hours', 'open'],
-      a: { ar: 'إحنا بالأردن 🇯🇴. للعنوان وساعات الدوام بالضبط، الفريق بيأكدلك على واتساب.\n[[WHATSAPP]]', en: "We're based in Jordan 🇯🇴. For the exact address and working hours, the team will confirm on WhatsApp.\n[[WHATSAPP]]" } },
+      a: { ar: 'مكتبنا بـ **شارع وصفي التل، عمّان** 📍\nلساعات الدوام بالضبط أو لترتيب زيارة، الفريق بيأكدلك على واتساب.\n[[MAP]]\n[[WHATSAPP]]', en: "Our office is on **Wasfi Al-Tal St., Amman** 📍\nFor exact working hours or to arrange a visit, the team will confirm on WhatsApp.\n[[MAP]]\n[[WHATSAPP]]" } },
     { id: 'time', k: ['قديش بياخد', 'قديش بدو', 'كم يوم', 'كم بياخد وقت', 'مده', 'وقت التسليم', 'متي بخلص', 'متي بيجهز', 'how long', 'timeline', 'deadline', 'delivery time'],
       a: { ar: 'المدة بتعتمد على حجم المشروع. بعد الاستشارة المجانية الفريق بيعطيك جدول زمني واضح. ⏱️\n[[CONSULT]]', en: 'Timing depends on the project size. After the free consultation, the team gives you a clear timeline. ⏱️\n[[CONSULT]]' } },
     { id: 'terms', k: ['شروط', 'سياسه', 'خصوصيه', 'دفعه', 'تعديلات', 'ملكيه', 'terms', 'policy', 'privacy', 'revision', 'payment'],
@@ -114,7 +115,7 @@
   const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   function parse(text) {
     const actions = [];
-    const clean = text.replace(/\[\[(CONSULT|WHATSAPP|WEBSITES|WORK|CONTACT)\]\]/g, (_, a) => { if (!actions.includes(a)) actions.push(a); return ''; })
+    const clean = text.replace(/\[\[(CONSULT|WHATSAPP|WEBSITES|WORK|CONTACT|MAP)\]\]/g, (_, a) => { if (!actions.includes(a)) actions.push(a); return ''; })
       .replace(/\[\[[A-Z]*$/, '') // hide a half-streamed tag
       .trim();
     const lines = esc(clean).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').split('\n');
@@ -275,6 +276,7 @@
     const act = e.target.closest('.gai__act')?.dataset.act;
     if (act === 'CONSULT') { if (window.GMConsult) { closePanel(); window.GMConsult.open(); } else window.open('https://wa.me/962796600022', '_blank', 'noopener'); }
     if (act === 'WHATSAPP') window.open('https://wa.me/962796600022', '_blank', 'noopener');
+    if (act === 'MAP') window.open('https://maps.app.goo.gl/KFzNALZsbk7PUZEL9', '_blank', 'noopener');
     const target = { WEBSITES: '#websites', WORK: '#work', CONTACT: '#contact' }[act];
     if (target) { if (innerWidth < 640) closePanel(); document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' }); }
   });
