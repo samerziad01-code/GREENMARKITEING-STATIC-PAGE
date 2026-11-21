@@ -189,75 +189,83 @@ document.querySelectorAll('[data-spot]').forEach(c => c.addEventListener('pointe
   c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px');
 }));
 
-// ---------- portfolio: each design shown on its own, in our own frames ----------
-// [file, category, client, width, height] — designs cut from the agency portfolio
-const WORK = [
-  ['social-well-combo', 'social', 'Well', 514, 664],
-  ['story-kaf-jordanian', 'story', 'Kaf Coffee Roasters', 525, 937],
-  ['brand-ftj-identity', 'brand', 'Future Targets jo', 1000, 861],
-  ['social-shahrazad-summer', 'social', 'Shahrazad', 703, 1000],
-  ['social-sensilis-care', 'social', 'Sensilis', 640, 768],
-  ['print-sensilis-box', 'print', 'Sensilis', 977, 689],
-  ['social-rawaq-umrah', 'social', 'Rawaq Travel', 647, 795],
-  ['story-sensilis-skin', 'story', 'Sensilis', 525, 936],
-  ['social-oishi-bite', 'social', 'Oishi', 720, 1000],
-  ['brand-well-logo', 'brand', 'Well', 892, 612],
-  ['social-kaf-beans', 'social', 'Kaf Coffee Roasters', 668, 840],
-  ['social-360-automotive', 'social', '360 Automotive', 640, 761],
-  ['print-well-menu-spread', 'print', 'Well', 1000, 401],
-  ['social-holiday-memories', 'social', 'Holiday', 634, 790],
-  ['story-360-automotive', 'story', '360 Automotive', 557, 1000],
-  ['social-ahwet-mazaya-kiwi', 'social', 'Ahwet Mazaya', 785, 1000],
-  ['brand-ftj-logo', 'brand', 'Future Targets jo', 732, 832],
-  ['social-first-line-petra', 'social', 'First Line', 640, 796],
-  ['social-dukkan-lahm-box', 'social', 'Dukkan Lahm', 506, 647],
-  ['print-menu-cover', 'print', '', 349, 815],
-  ['social-shahrazad-taste', 'social', 'Shahrazad', 898, 826],
-  ['story-kaf-cafe', 'story', 'Kaf Coffee Roasters', 524, 908],
-  ['social-kaf-espresso', 'social', 'Kaf Coffee Roasters', 641, 791],
-  ['brand-well-identity', 'brand', 'Well', 1000, 444],
-  ['social-holiday-sharm', 'social', 'Holiday', 656, 821],
-  ['social-sensilis-glow', 'social', 'Sensilis', 787, 1000],
-  ['story-sensilis-glow', 'story', 'Sensilis', 524, 939],
-  ['social-oishi-noodles', 'social', 'Oishi', 672, 862],
-  ['print-well-menu', 'print', 'Well', 591, 361],
-  ['social-al-joud-lunch', 'social', 'Al Joud', 664, 815],
-  ['brand-ftj-palette', 'brand', 'Future Targets jo', 989, 746],
-  ['social-shahrazad-drinks', 'social', 'Shahrazad', 688, 738],
-  ['story-kaf-cup', 'story', 'Kaf Coffee Roasters', 423, 939],
-  ['social-match-night', 'social', '', 646, 768],
-  ['print-menu-trifold', 'print', '', 591, 408],
-  ['social-bite-into-crunch', 'social', '', 647, 768],
-  ['story-sensilis-routine', 'story', 'Sensilis', 524, 939]
+// ---------- work: one card per client, laid out in our own design ----------
+// Each card is a new composition: brand colour, logo, what we did, and a fanned collage of the pieces.
+// pieces: [file, category, width, height]
+const PROJECTS = [
+  { name: 'Well', logo: 'well', c1: '#2a1f14', c2: '#f2a81d', ind: ['مطعم برجر', 'Burger restaurant'],
+    pieces: [['brand-well-logo', 'brand', 892, 612], ['social-well-combo', 'social', 514, 664], ['print-well-menu-spread', 'print', 1000, 401], ['brand-well-identity', 'brand', 1000, 444], ['print-well-menu', 'print', 591, 361]] },
+  { name: 'Sensilis', logo: 'sensilis', c1: '#5c2a3a', c2: '#e7a3b4', ind: ['عناية بالبشرة', 'Skincare'],
+    pieces: [['story-sensilis-skin', 'story', 525, 936], ['social-sensilis-care', 'social', 640, 768], ['print-sensilis-box', 'print', 977, 689], ['social-sensilis-glow', 'social', 787, 1000], ['story-sensilis-glow', 'story', 524, 939], ['story-sensilis-routine', 'story', 524, 939]] },
+  { name: 'Kaf Coffee Roasters', logo: 'kaf', c1: '#2b1a10', c2: '#b07a4a', ind: ['محمصة قهوة', 'Coffee roastery'],
+    pieces: [['story-kaf-jordanian', 'story', 525, 937], ['social-kaf-beans', 'social', 668, 840], ['social-kaf-espresso', 'social', 641, 791], ['story-kaf-cafe', 'story', 524, 908], ['story-kaf-cup', 'story', 423, 939]] },
+  { name: 'Future Targets jo', logo: '', c1: '#0d2a44', c2: '#3f8fd0', ind: ['هوية شركة', 'Company identity'],
+    pieces: [['brand-ftj-logo', 'brand', 732, 832], ['brand-ftj-identity', 'brand', 1000, 861], ['brand-ftj-palette', 'brand', 989, 746]] },
+  { name: 'Shahrazad', logo: 'shahrazad', c1: '#4a1410', c2: '#e0693c', ind: ['مطعم ومشروبات', 'Food & drinks'],
+    pieces: [['social-shahrazad-summer', 'social', 703, 1000], ['social-shahrazad-taste', 'social', 898, 826], ['social-shahrazad-drinks', 'social', 688, 738]] },
+  { name: '360 Automotive', logo: '360-automotive', c1: '#111a24', c2: '#5d7d9c', ind: ['خدمات سيارات', 'Car services'],
+    pieces: [['social-360-automotive', 'social', 640, 761], ['story-360-automotive', 'story', 557, 1000]] },
+  { name: 'Oishi', logo: 'oishi', c1: '#3d0d0d', c2: '#e04b3a', ind: ['مطعم آسيوي', 'Asian food'],
+    pieces: [['social-oishi-bite', 'social', 720, 1000], ['social-oishi-noodles', 'social', 672, 862]] },
+  { name: 'Holiday', logo: 'holiday', c1: '#08324a', c2: '#2aa1c9', ind: ['سياحة وسفر', 'Travel'],
+    pieces: [['social-holiday-memories', 'social', 634, 790], ['social-holiday-sharm', 'social', 656, 821]] },
+  { name: 'Rawaq Travel · First Line', logo: 'rawaq', c1: '#1d2b1a', c2: '#c9a24a', ind: ['حملات سفر', 'Travel campaigns'],
+    pieces: [['social-rawaq-umrah', 'social', 647, 795], ['social-first-line-petra', 'social', 640, 796]] },
+  { name: 'Ahwet Mazaya · Al Joud · Dukkan Lahm', logo: 'ahwet-mazaya', c1: '#173a1b', c2: '#41A223', ind: ['مطاعم ومقاهي', 'Restaurants & cafés'],
+    pieces: [['social-ahwet-mazaya-kiwi', 'social', 785, 1000], ['social-al-joud-lunch', 'social', 664, 815], ['social-dukkan-lahm-box', 'social', 506, 647], ['social-bite-into-crunch', 'social', 647, 768], ['social-match-night', 'social', 646, 768]] },
+  { name: 'Menus', logo: '', c1: '#2f2a22', c2: '#cdb48a', ind: ['منيوهات وطباعة', 'Menus & print'],
+    pieces: [['print-menu-trifold', 'print', 591, 408], ['print-menu-cover', 'print', 349, 815]] }
 ];
 const CAT = {
-  social: { ar: 'سوشال ميديا', en: 'Social media' }, story: { ar: 'ستوري', en: 'Story' },
+  social: { ar: 'سوشال ميديا', en: 'Social media' }, story: { ar: 'ستوري', en: 'Stories' },
   brand: { ar: 'هوية بصرية', en: 'Brand identity' }, print: { ar: 'طباعة وتغليف', en: 'Print & packaging' }
 };
-const FIRST = 12; // shown before "show more"
+const FIRST = 6; // cards shown before "show more" (desktop)
 const gallery = document.getElementById('gallery'), moreBtn = document.getElementById('workMore');
 let activeFilter = 'all', expanded = false;
-const catLabel = c => CAT[c][root.lang === 'en' ? 'en' : 'ar'];
+const isEn = () => root.lang === 'en';
+const catLabel = c => CAT[c][isEn() ? 'en' : 'ar'];
+const cats = p => [...new Set(p.pieces.map(x => x[1]))];
+// the collage: up to 3 pieces, the strongest in front; each sits in a box with its own ratio (never stretched)
+function collage(p) {
+  const pick = p.pieces.slice(0, 3);
+  const order = pick.length === 3 ? [1, 0, 2] : pick.length === 2 ? [1, 0] : [0]; // [left, front, right]
+  const slots = pick.length === 3 ? ['l', 'f', 'r'] : pick.length === 2 ? ['l', 'f'] : ['f'];
+  return order.map((k, n) => {
+    const [f, cat, w, h] = pick[k], r = w / h, shape = cat === 'story' ? 'story' : r > 1.25 ? 'wide' : 'tall';
+    return `<span class="shot shot--${slots[n]} shot--${shape}" style="--r:${(w / h).toFixed(3)}"><img src="assets/portfolio/${f}.webp" alt="" width="${w}" height="${h}" loading="lazy" decoding="async"></span>`;
+  }).join('');
+}
 function renderWork() {
-  gallery.innerHTML = WORK.map(([f, cat, client, w, h], i) => `
-    <figure class="pf pf--${cat}" data-cat="${cat}" data-i="${i}">
-      <button type="button" class="pf__btn" data-cursor="view" aria-label="${client ? client + ' — ' : ''}${catLabel(cat)}">
-        <img src="assets/portfolio/${f}.webp" alt="${client ? client + ' — ' : ''}${CAT[cat].en} design by Green Marketing" width="${w}" height="${h}" loading="lazy" decoding="async">
+  gallery.innerHTML = PROJECTS.map((p, i) => `
+    <article class="proj" data-i="${i}" data-cats="${cats(p).join(' ')}" style="--c1:${p.c1};--c2:${p.c2}">
+      <button type="button" class="proj__btn" data-cursor="view" aria-label="${p.name} — ${isEn() ? 'view work' : 'شوف الشغل'}">
+        <span class="proj__stage">${collage(p)}</span>
+        <span class="proj__info">
+          <span class="proj__head">
+            ${p.logo ? `<img class="proj__logo" src="assets/clients/${p.logo}.webp" alt="" loading="lazy" decoding="async">` : `<span class="proj__logo proj__logo--txt" aria-hidden="true">${p.name[0]}</span>`}
+            <span class="proj__title"><bdi>${p.name}</bdi><small>${p.ind[isEn() ? 1 : 0]}</small></span>
+          </span>
+          <span class="proj__foot">
+            <span class="proj__tags">${cats(p).map(c => `<span>${catLabel(c)}</span>`).join('')}</span>
+            <span class="proj__count">${p.pieces.length} <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </span>
+        </span>
       </button>
-      <figcaption>${client ? `<bdi>${client}</bdi>` : '<span></span>'}<span class="pf__cat">${catLabel(cat)}</span></figcaption>
-    </figure>`).join('');
+    </article>`).join('');
   applyWorkFilter();
 }
 function applyWorkFilter() {
   let shown = 0;
-  gallery.querySelectorAll('.pf').forEach(el => {
-    const match = activeFilter === 'all' || el.dataset.cat === activeFilter;
+  gallery.querySelectorAll('.proj').forEach(el => {
+    const match = activeFilter === 'all' || el.dataset.cats.split(' ').includes(activeFilter);
     const visible = match && (expanded || activeFilter !== 'all' || shown < FIRST);
     if (match && visible) shown++;
-    el.classList.toggle('is-hidden', !visible);
+    el.classList.toggle('is-hidden', !match);       // filtered out everywhere
+    el.classList.toggle('is-more', match && !visible); // hidden on desktop until "show more" (phones swipe through all)
   });
-  const total = WORK.filter(w => activeFilter === 'all' || w[1] === activeFilter).length;
-  moreBtn.hidden = expanded || activeFilter !== 'all' || total <= FIRST;
+  gallery.scrollLeft = 0;
+  moreBtn.hidden = expanded || activeFilter !== 'all' || PROJECTS.length <= FIRST;
 }
 document.querySelectorAll('.filter').forEach(f => f.addEventListener('click', () => {
   document.querySelectorAll('.filter').forEach(x => x.classList.toggle('is-active', x === f));
@@ -299,10 +307,11 @@ lb.addEventListener('touchend', e => {
   else if (dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.5) closeLb();
 }, { passive: true });
 gallery.addEventListener('click', e => {
-  const fig = e.target.closest('.pf'); if (!fig || !e.target.closest('.pf__btn')) return;
-  const visible = [...gallery.querySelectorAll('.pf:not(.is-hidden)')];
-  const items = visible.map(el => { const [f, cat, client] = WORK[+el.dataset.i]; return { src: `assets/portfolio/${f}.webp`, cap: (client ? client + ' · ' : '') + catLabel(cat) }; });
-  openLb(visible.indexOf(fig), items);
+  const card = e.target.closest('.proj'); if (!card || !e.target.closest('.proj__btn')) return;
+  const p = PROJECTS[+card.dataset.i];
+  // the selected filter narrows the pieces too (e.g. only Sensilis stories)
+  const pieces = p.pieces.filter(x => activeFilter === 'all' || x[1] === activeFilter);
+  openLb(0, pieces.map(([f, cat], n) => ({ src: `assets/portfolio/${f}.webp`, cap: `${p.name} · ${catLabel(cat)} · ${n + 1}/${pieces.length}` })));
 });
 document.getElementById('lbClose').onclick = closeLb;
 document.getElementById('lbPrev').onclick = () => { idx = (idx - 1 + list.length) % list.length; show(); };
