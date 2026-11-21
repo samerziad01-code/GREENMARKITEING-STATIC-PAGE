@@ -1,15 +1,17 @@
-// Green Marketing — AI assistant endpoint (Vercel serverless function, Node.js runtime).
-// POST /api/chat  { messages: [{ role: "user" | "assistant", content: string }, ...] }
+// Green Marketing — AI assistant chat handler.
+// POST /api/chat  { messages: [{ role: "user" | "assistant", content: string }, ...], lang: "ar" | "en" }
 // Streams the assistant's reply back as plain text (UTF-8 chunks).
+// Runs inside server.js on Render (also compatible with a Vercel Node function).
 //
 // The API key stays on the server: set ANTHROPIC_API_KEY in the hosting dashboard
-// (Vercel → Project → Settings → Environment Variables). Never put it in the website files.
+// (Render → green-marketing-ai → Environment). Never put it in the website files.
 import Anthropic from "@anthropic-ai/sdk";
 import { SYSTEM_PROMPT } from "./knowledge.js";
 
 export const config = { maxDuration: 60 };
 
-const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
+let client = null; // created on first use; reads ANTHROPIC_API_KEY from the environment
+const getClient = () => (client ??= new Anthropic());
 
 const MAX_TURNS = 16;        // only the most recent turns are sent to the model
 const MAX_CHARS = 1500;      // per message, to keep requests small and abuse-resistant
@@ -51,7 +53,7 @@ export default async function handler(req, res) {
   });
 
   try {
-    const stream = client.beta.messages.stream({
+    const stream = getClient().beta.messages.stream({
       model: "claude-opus-5-5",
       max_tokens: 2000,
       // Short, conversational answers: low effort keeps replies fast and cheap.

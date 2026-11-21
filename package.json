@@ -2,11 +2,14 @@
   "name": "green-marketing-website",
   "private": true,
   "type": "module",
-  "description": "Green Marketing Agency website + AI assistant (Vercel serverless function in /api).",
+  "description": "Green Marketing Agency — static website (public/) + AI assistant API (server.js) for Render.",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.136.0"
+    "@anthropic-ai/sdk": "^1.12.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20 <25"
   }
 }

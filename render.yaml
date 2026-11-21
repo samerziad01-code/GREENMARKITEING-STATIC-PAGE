@@ -1,0 +1,59 @@
+# Render Blueprint — Green Marketing Agency
+# Render → New → Blueprint → pick this GitHub repo. It creates both services below.
+services:
+  # 1) The website: static files from public/, served from Render's global CDN (free, never sleeps).
+  - type: web
+    name: green-marketing-jo
+    runtime: static
+    buildCommand: echo "Static site - no build step"
+    staticPublishPath: ./public
+    autoDeployTrigger: commit
+    buildFilter:
+      paths:
+        - public/**
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=604800
+    routes:
+      # English version lives at /en (same page, English content)
+      - type: redirect
+        source: /en/
+        destination: /en
+      - type: rewrite
+        source: /en
+        destination: /index.html
+
+  # 2) The AI assistant API (Claude). The site calls it from the chat widget.
+  - type: web
+    name: green-marketing-ai
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    autoDeployTrigger: commit
+    buildFilter:
+      paths:
+        - server.js
+        - api/**
+        - package.json
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Your Claude API key — Render asks for it when you create the Blueprint. Never commit it.
+      - key: ANTHROPIC_API_KEY
+        sync: false

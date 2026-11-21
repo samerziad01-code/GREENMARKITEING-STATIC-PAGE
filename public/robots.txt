@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://green-marketing-jo.onrender.com/sitemap.xml
