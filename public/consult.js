@@ -24,9 +24,10 @@
     preview: { ar: 'هيك رح توصلنا رسالتك:', en: "Here's the message we'll receive:" },
     note: { ar: 'رح ينفتح واتساب والرسالة جاهزة — بتقدر تعدّلها قبل الإرسال.', en: 'WhatsApp will open with the message ready — you can edit it before sending.' },
     needName: { ar: 'اكتب اسمك لو سمحت', en: 'Please enter your name' },
-    hello: { ar: 'مرحبا Green Marketing 👋\nبدي استشارة مجانية لمشروعي:', en: 'Hi Green Marketing 👋\nI would like a free consultation for my project:' },
+    // no emoji in the WhatsApp text: 4-byte emoji turn into "?" when WhatsApp Desktop opens a wa.me link
+    hello: { ar: 'مرحبا Green Marketing،\nبدي استشارة مجانية لمشروعي:', en: 'Hi Green Marketing,\nI would like a free consultation for my project:' },
     lName: { ar: 'الاسم', en: 'Name' }, lBiz: { ar: 'المنشأة', en: 'Business' }, lNotes: { ar: 'ملاحظات', en: 'Notes' }, lTime: { ar: 'أفضل وقت للتواصل', en: 'Best time to reach me' },
-    thanks: { ar: 'شكرًا! 🌿', en: 'Thank you! 🌿' }
+    thanks: { ar: 'شكرًا!', en: 'Thank you!' }
   };
 
   // The questions. type: one | multi ; optional questions can be skipped.
@@ -100,7 +101,8 @@
     if (st.notes.trim()) lines.push(`• ${T(UI.lNotes)}: ${st.notes.trim()}`);
     // the site link on its own line makes WhatsApp show the Green Marketing preview card (logo + image)
     lines.push('', T(UI.thanks), '', L() === 'en' ? 'https://greenmarketingjo.com' : 'https://greenmarketingjo.com/?lang=ar');
-    return lines.join('\n');
+    // drop any 4-byte emoji a visitor typed (name/notes) so WhatsApp never shows "?"
+    return lines.join('\n').replace(/[\u{10000}-\u{10FFFF}]️?/gu, '').replace(/[ \t]+\n/g, '\n');
   }
   const waUrl = text => `https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`;
 
