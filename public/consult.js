@@ -151,7 +151,7 @@
       <div class="wiz__bar" aria-hidden="true"><i style="width:${pct}%"></i></div>
       <div class="wiz__body">${body}</div>
       <div class="wiz__foot">
-        ${i > 0 ? `<button type="button" class="btn btn--ghost btn--sm" data-wiz="back">${T(UI.back)}</button>` : `<a class="wiz__direct" href="${window.gmWaLink ? window.gmWaLink() : `https://wa.me/${PHONE}`}" target="_blank" rel="noopener">${T(UI.direct)}</a>`}
+        ${i > 0 ? `<button type="button" class="btn btn--ghost btn--sm" data-wiz="back">${T(UI.back)}</button>` : `<a class="wiz__direct" href="${window.gmWaLink ? window.gmWaLink() : `https://wa.me/${PHONE}`}"${window.gmIsMobile ? "" : " target=\"_blank\""} rel="noopener">${T(UI.direct)}</a>`}
         <span class="wiz__spacer"></span>
         ${!isDetails && q.optional ? `<button type="button" class="btn btn--ghost btn--sm" data-wiz="skip">${T(UI.skip)}</button>` : ''}
         <button type="button" class="btn btn--solid btn--sm wiz__next${isDetails ? ' wiz__send' : ''}" data-wiz="next" ${answered(i) ? '' : 'disabled'}>${nextLabel}</button>
@@ -190,7 +190,7 @@
     if (act === 'next') {
       if (st.step >= Q.length) {
         if (!st.name.trim()) { dlg.querySelector('#wizName')?.focus(); return; }
-        window.open(waUrl(message()), '_blank', 'noopener');
+        if (window.gmOpenWa) window.gmOpenWa(waUrl(message())); else window.open(waUrl(message()), '_blank', 'noopener');
         return;
       }
       if (answered(st.step)) go(1);

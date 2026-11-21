@@ -431,7 +431,7 @@ function load3D() {
   if (!document.getElementById('hero3d')) return;
   const s = document.createElement('script');
   s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121i'; document.body.appendChild(m); };
+  s.onload = () => { const m = document.createElement('script'); m.src = 'three-scene.js?v=20261121j'; document.body.appendChild(m); };
   document.body.appendChild(s);
 }
 if (document.readyState === 'complete') setTimeout(load3D, 200);
@@ -441,6 +441,13 @@ else addEventListener('load', () => ('requestIdleCallback' in window ? requestId
 // no emoji: 4-byte emoji turn into "?" when WhatsApp Desktop opens a wa.me link
 const WA_HELLO = { ar: 'مرحبا Green Marketing\n\nhttps://greenmarketingjo.com/?lang=ar', en: 'Hi Green Marketing\n\nhttps://greenmarketingjo.com' };
 window.gmWaLink = () => 'https://wa.me/962796600022?text=' + encodeURIComponent(WA_HELLO[root.lang === 'ar' ? 'ar' : 'en']);
-const syncWaLinks = () => document.querySelectorAll('a[href^="https://wa.me/962796600022"]').forEach(a => { a.href = window.gmWaLink(); });
+// Phones: open WhatsApp in the SAME tab. iOS only hands a wa.me link to the WhatsApp app when it is
+// followed in the current tab; a new tab (target=_blank / window.open) stops on WhatsApp's web page.
+window.gmIsMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+window.gmOpenWa = url => { if (window.gmIsMobile) location.href = url; else window.open(url, '_blank', 'noopener'); };
+const syncWaLinks = () => document.querySelectorAll('a[href^="https://wa.me/962796600022"]').forEach(a => {
+  a.href = window.gmWaLink();
+  if (window.gmIsMobile) a.removeAttribute('target');
+});
 syncWaLinks();
 document.addEventListener('langchange', syncWaLinks);
