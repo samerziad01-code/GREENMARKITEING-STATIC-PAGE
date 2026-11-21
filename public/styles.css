@@ -605,6 +605,8 @@ html[dir="rtl"] .wiz__preview { border-radius: 16px 16px 16px 4px; }
 .lightbox__prev { left: 16px; } .lightbox__next { right: 16px; }
 /* Arabic reads right-to-left: "previous" sits on the right, "next" on the left, arrows mirrored */
 html[dir="rtl"] .lightbox__prev { left: auto; right: 16px; } html[dir="rtl"] .lightbox__next { right: auto; left: 16px; }
+/* the ‹ › glyphs are bidi-mirrored inside RTL text; pin them to LTR so only this one flip applies */
+.lightbox__nav { direction: ltr; unicode-bidi: isolate; }
 html[dir="rtl"] .lightbox__nav { transform: translateY(-50%) scaleX(-1); }
 @media (max-width: 640px) { html[dir="rtl"] .lightbox__nav { transform: scaleX(-1); } }
 
