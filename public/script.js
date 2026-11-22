@@ -439,7 +439,7 @@ else addEventListener('load', () => ('requestIdleCallback' in window ? requestId
 
 // ---------- WhatsApp: open with a greeting + the site link, so the chat shows the Green Marketing preview card ----------
 // no emoji: 4-byte emoji turn into "?" when WhatsApp Desktop opens a wa.me link
-const WA_HELLO = { ar: 'مرحبا Green Marketing\n\nhttps://greenmarketingjo.com/?lang=ar', en: 'Hi Green Marketing\n\nhttps://greenmarketingjo.com' };
+const WA_HELLO = { ar: 'مرحبا Green Marketing\n\nhttps://greenmarketingjo.com/?lang=ar&from=wa', en: 'Hi Green Marketing\n\nhttps://greenmarketingjo.com' };
 window.gmWaLink = () => 'https://wa.me/962796600022?text=' + encodeURIComponent(WA_HELLO[root.lang === 'ar' ? 'ar' : 'en']);
 // Phones: open WhatsApp in the SAME tab. iOS only hands a wa.me link to the WhatsApp app when it is
 // followed in the current tab; a new tab (target=_blank / window.open) stops on WhatsApp's web page.

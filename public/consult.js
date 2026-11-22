@@ -100,7 +100,7 @@
     lines.push(`• ${T(UI.lTime)}: ${TIMES[st.time][L() === 'en' ? 1 : 0]}`);
     if (st.notes.trim()) lines.push(`• ${T(UI.lNotes)}: ${st.notes.trim()}`);
     // the site link on its own line makes WhatsApp show the Green Marketing preview card (logo + image)
-    lines.push('', T(UI.thanks), '', L() === 'en' ? 'https://greenmarketingjo.com' : 'https://greenmarketingjo.com/?lang=ar');
+    lines.push('', T(UI.thanks), '', L() === 'en' ? 'https://greenmarketingjo.com' : 'https://greenmarketingjo.com/?lang=ar&from=wa');
     // drop any 4-byte emoji a visitor typed (name/notes) so WhatsApp never shows "?"
     return lines.join('\n').replace(/[\u{10000}-\u{10FFFF}]️?/gu, '').replace(/[ \t]+\n/g, '\n');
   }
